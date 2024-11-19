@@ -1,0 +1,125 @@
+.padreProfile{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileVisitante-home {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .profileVisitante-left-container {
+    width: 65%;
+    display: flex;
+    background-color: white;
+    justify-content: flex-start; /* Alinea el contenido al principio */
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 70px;
+  }
+
+  
+  .profileVisitante-box-container {
+    background: var(--accent);
+    padding: 1rem;
+    border-radius: 20px;
+    width: 35vh;
+  }
+  
+  .profileVisitante-text-field {
+    background: white;
+    width: 100%;
+  }
+
+  .profileVisitante-form-container{
+    width: 100%;
+  }
+  
+  .profileVisitante-hint {
+    display: flex;
+    font-size: var(--hint-font-size);
+    background-color: var(--accent);
+    margin-top: 2rem;
+    font-weight: normal;
+    padding: 1rem;
+    width: 35vh;
+    flex-flow: row;
+    align-items: center;
+    text-align: left;
+    border-radius: var(--rad);
+    margin-bottom: 15px;
+  }
+  
+  .profileVisitante-hint .profileVisitante-icon {
+    margin-right: 20px;
+  }
+  
+  .profileVisitante-button-save {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--button-accent);
+    border: none;
+    color: white;
+    width: 200px;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  
+  .profileVisitante-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .profileVisitante-button-container a {
+    font-size: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .profileVisitante-right-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+    }
+  }
+  @media (max-width: 768px) {
+    .profileVisitante-home {
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .profileVisitante-left-container{
+      height: 70% ;
+      width: 100%;
+      min-width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profileVisitante-right-container{
+      width: 100%;
+      min-width: 100%;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+    }
+  }
+  
+
+  .h1-profile{
+    margin-bottom: -60px;
+  }

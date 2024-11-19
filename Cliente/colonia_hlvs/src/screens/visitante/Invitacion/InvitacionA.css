@@ -1,0 +1,115 @@
+/* Contenedor principal que ocupa toda la altura de la ventana y centra el contenido */
+.padreVisitante {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor para el contenido principal que permite el desplazamiento y centra el contenido */
+.invitacionA-home {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitacionA-h1-visitante {
+  margin-top: 80px;
+}
+
+.invitacionA-card-style-mt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.invitacionA-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.invitacionA-extra-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+.invitacionA-extra-button:hover {
+  background-color: #0056b3;
+}
+
+.invitacionA-button-container a {
+  font-size: 20px;
+}
+
+/* Estilo para el contenedor izquierdo */
+.invitacionA-left-container {
+  width: 65%;
+  display: flex;
+  background-color: white;
+  justify-content: flex-start; /* Alinea el contenido al principio */
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top: 70px;
+}
+
+/* Estilo para el contenedor derecho */
+.invitacionA-right-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .invitacionA-home {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .invitacionA-left-container,
+  .invitacionA-right-container {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .invitacionA-left-container {
+    height: 75%;
+    margin-bottom: 20px;
+  }
+
+  .invitacionA-right-container{
+    background-color: aliceblue;
+  }
+  .invitacionA-h1-visitante {
+    margin-top: 100px;
+    margin-bottom: -100px;
+  }
+}
+
+
+.div-visitant{
+  justify-content: center;
+}

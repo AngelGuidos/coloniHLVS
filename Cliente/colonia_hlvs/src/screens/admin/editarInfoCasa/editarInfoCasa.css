@@ -1,0 +1,126 @@
+.info-casa-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+
+  }
+  
+  .CardContent {
+    width: 100%; 
+  }
+  
+  .casa-edit {
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+ 
+
+  .casa-info {
+    display: flex;
+    padding-left:20px;
+    padding-top: 20px;
+  }
+
+  .icon-edit-info {
+    padding: 1px;
+    display: flex; 
+    background-color: white;
+    color: var(--bg-login);
+    justify-content: center; 
+    align-items: center; 
+    border: none;
+    
+  }
+
+
+  .casa-info-responsable{
+    display: flex;
+    padding-bottom: 30px;    
+    padding-top: 30px;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .casa-info-capacidad{
+    display: flex;   
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+  }
+
+
+
+  .info-casa-container-residentes{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+
+  }
+
+  .casa-info-responsable-tabla{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    
+  }
+
+ .casa-edit-residentes{
+    padding-left: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+ }
+
+ p{
+    font-weight: bold;
+    font-size: 18px;
+ }
+
+ .icon-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #0d1b2a;
+  width: 0;
+  height: 100%;
+  border: none;
+  margin: auto;
+}
+
+.agregar-residente{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.text-field-agregar{
+  display: flex;
+  padding-top: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.casa-capacity{
+  margin-left: -10px;
+}

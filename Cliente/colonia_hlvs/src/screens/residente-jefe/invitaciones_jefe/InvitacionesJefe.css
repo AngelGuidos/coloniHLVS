@@ -1,0 +1,21 @@
+.IJ-dropdown {
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.IJ-rechazar-button {
+    align-content: center;
+}
+
+.card-unica-recurrente{
+    .centered-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

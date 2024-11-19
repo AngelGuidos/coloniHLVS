@@ -1,0 +1,121 @@
+/* Contenedor principal que ocupa toda la altura de la ventana y centra el contenido */
+.PadreHomeVisitante {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor para el contenido principal que permite el desplazamiento y centra el contenido */
+.invitadoHome {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el contenedor izquierdo */
+.left-container-visitante {
+  width: 65%;
+  display: flex;
+  background-color: white;
+  justify-content: flex-start; /* Alinea el contenido al principio */
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top: 70px;
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  max-height: 80vh; /* Ajusta la altura máxima para permitir el desplazamiento */
+  -ms-overflow-style: none;  /* Oculta barra de desplazamiento en IE y Edge */
+  scrollbar-width: none;  /* Oculta barra de desplazamiento en Firefox */
+}
+
+.left-container-visitante::-webkit-scrollbar {
+  display: none; /* Oculta barra de desplazamiento en Chrome, Safari y Opera */
+}
+
+/* Estilo para el título */
+.h1-visitante {
+  margin-bottom: 40px;
+}
+
+/* Estilo para el contenedor de las tarjetas */
+.card-style-mt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  min-height: 80vh;
+}
+.h2-invitation{
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+/* .card-style-mt{
+  padding-top: 400px;
+} */
+.card-style-mt::-webkit-scrollbar{
+  display: none;
+}
+
+/* Estilo para el botón adicional */
+.extra-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.extra-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para el contenedor derecho */
+.right-container-visitante {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .invitadoHome {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .left-container-visitante,
+  .right-container-visitante {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left-container-visitante {
+    height: 100%;
+  }
+
+  .right-container-visitante {
+    background-color: aliceblue;
+  }
+}
+
+@media (max-width: 768px) {
+  .h2-invitation{
+    padding-top: 50px;
+  }
+}

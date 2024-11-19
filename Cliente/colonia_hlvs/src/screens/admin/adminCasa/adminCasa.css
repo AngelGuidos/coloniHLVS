@@ -1,0 +1,53 @@
+.title-r {
+    color: var(--text-color);
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.table-card-container {
+    padding-left: 50px; 
+    padding-bottom: 20px;
+}
+
+.text-field, .button {
+    padding-top: 20px;
+    padding-left: 50px; 
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.button-panel-admin{
+    background-color: var(--bg-login);
+    width: 30%;
+    height: 50px;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+    
+
+
+.menu-content { 
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 500px);
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+}
+
+.icon-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #0d1b2a;
+    width: 10%;
+    height: 100%;
+    border: none;
+    margin: auto;
+  }

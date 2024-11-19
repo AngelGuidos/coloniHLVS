@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--bg-login);
+    width: 100%;
+    flex: 0 0 auto; /* Navbar height stays auto */
+  }
+  
+  .welcome-message {
+    font-size: 18px;
+    color: var(--text-inverted);
+    margin-right: 120px;
+  }
+
+  .logo-img{
+    width: 100px;
+    padding: 0.4rem;
+    margin-left: 100px;
+  }
+  
+  /* Media queries para hacer el navbar responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      display: none;
+    }
+  }
+  

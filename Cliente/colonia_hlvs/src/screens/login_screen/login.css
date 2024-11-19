@@ -1,0 +1,274 @@
+.main-container-login{
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 0;
+}
+
+
+/* Left Side START */
+.leftSide {
+    position: relative;
+    width: 55%;
+    height: 100vh;
+    padding: 0;
+    align-content: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftSide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/bg-houses.jpg');
+    background-position: 50% 50%;
+    background-size: cover;
+    filter: brightness(0.6); /* Aplica el filtro aquí */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+}
+
+.left-container-login {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+.image-left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: auto;
+}
+
+.h1-login-left {
+    font-size: 34px;
+    color: var(--text-inverted);
+    margin-bottom: -60px;
+}
+
+    /* Left Side END*/
+
+
+    /* Rigth Side START */
+.rigthSide{
+    width: 45%;
+    height: 100vh;
+    padding: 0;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rigth-container-login{
+    padding: 0;
+    justify-content: center;
+    width: 400px;
+}
+
+.h1-login{
+    font-size: 34px;
+    color: var(--text-inverted);
+}
+
+.h3-copy{
+    font-size: 13px;
+    color: var(--text-inverted);
+    margin-top: 50px;
+}
+
+.login_modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: var(--rad);
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vh;
+    /* max-height: 80vh; */
+    min-height: auto;
+
+    h3{
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+    .clarification{font-weight: normal; font-size: small; padding: 10px}
+
+    .user_roles{
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+        justify-content: left;
+        border-radius: var(--rad);
+        padding: 5px;
+        
+        &:hover{
+            background-color: lightgray;
+        }
+
+        .slim_button{
+            background-color: var(--text-primary);
+            border: 0;
+            padding: 5px;
+            height: fit-content;
+            width: fit-content;
+            
+            svg{
+                margin: 0%;
+            }
+        }
+
+        .user_card{
+            display: flex;
+            flex-direction: column;
+            border-radius: var(--rad);
+            justify-content: left;
+            justify-self: left;
+            padding: 15px;
+    
+            h4{
+                font-weight: 500;
+                width: fit-content;
+                font-size: 2vh;
+            }
+            p{
+                font-weight: 400;
+                width: fit-content;
+                font-family: noto sans, sans-serif;
+                color: var(--text-secondary), grey;
+                font-size: 1rem;
+    
+            }
+        }
+    }
+
+}
+
+.google_cont{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    div {
+        width: min-content;
+        display: block;
+        justify-self: center;
+    }
+}
+
+.btn-google {
+    border: none;
+    border-radius: 10px;
+    padding: 0.4rem;
+    margin-top: 10px;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically (optional) */
+    text-align: center; /* Center text horizontally */
+    margin: 0 auto;
+    background-color: var(--text-inverted);
+    color: var(--text);
+    gap: 0.8rem;
+    margin-top: 30px;
+    width: max-content;
+
+    .h3Google{
+        font-size: 13px;
+        color: var(--text);
+        margin-left: 10px;
+        margin-right: 30px;
+        font-weight: 400;
+    }
+  }
+
+
+
+  .btn-google:hover{
+      background-color: var(--accent);
+  }
+
+    /* Rigth Side END */
+    @media (min-width: 768px) {
+        .image-rigth-container{
+            display: none;
+        }
+        .h1-login-rigth{
+            display: none;
+        }
+        .rigthSide{
+            background-color: var(--bg-login);
+        }
+    }
+    
+    /* Media query for mobile devices (max-width 768px) */
+    @media (max-width: 768px) {
+        .main-container-login{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100vh;
+
+            .leftSide{
+                display: none;
+            }
+            .rigthSide{
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+
+                .h1-login{
+                    display: none;
+                }
+                .h1-login-rigth{
+                    color: var(--text-inverted);
+                    font-size: 29px;
+                    margin-bottom: -40px;
+                }
+                .image-rigth-container{
+                    margin-left: 4px;
+                    width: 240px;
+                    margin-bottom: 10px;
+                }
+            }
+            .rigthSide::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('../../assets/images/bg-houses.jpg');
+                background-position: 50% 50%;
+                background-size: cover;
+                filter: brightness(0.6); /* Aplica el filtro aquí */
+                z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+
+            }
+        }
+    }

@@ -1,0 +1,80 @@
+.card-unica-recurrente {
+    background-color: var(--background-color-invitations);
+    border: 1px solid #ddd;
+    border-radius: var(--rad);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+}
+
+.scroll_padd{
+    margin: 20px;
+}
+
+.invitacion-tipo {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #333;
+    text-align: center;
+}
+
+.invitacion-detalle {
+    margin: 5px 0;
+    color: #555;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.button-contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.rechazar-button, .aceptar-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.rechazar-button {
+    background-color: var(--status-wrong-weak);
+    color: var(--status-wrong);
+    border: 1px solid var(--status-wrong);
+}
+
+.aceptar-button {
+    background-color: var(--status-success-weak);
+    color: var(--status-success);
+    border: 1px solid var(--status-success);
+}
+
+.rechazar-button:hover, .aceptar-button:hover {
+    opacity: 0.9;
+}
+
+.days-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.day {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    color: #555;
+}
+
+.day.active {
+    background-color: var(--selection-day-color);
+    color: #fff;
+    border: 1px solid var(--selection-day-color);
+}

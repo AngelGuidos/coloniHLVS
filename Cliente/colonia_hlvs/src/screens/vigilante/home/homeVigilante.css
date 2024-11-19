@@ -1,0 +1,99 @@
+.containerMain{
+  height: 100vh;
+  flex: 1 0 auto;
+  overflow: auto;
+}
+
+.container-vigi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+
+.qr-scanner-container{
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.qr-vigilante{
+  font-size: 15rem !important;
+}
+.qr-container-reader{
+  width: 350px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.login-form-container{
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+
+.h2-qr {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+.h2-form{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+
+.textFlied{
+  margin-bottom: 20px;
+}
+
+.btn-vigilate {
+  width: 250px;
+  margin-top: 20px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--button-accent);
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-vigilate:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container-vigi{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-bottom: 90px;
+    margin-top: 25px;
+    padding: 1rem;
+  }
+}
+
+.btn-buttom-vigi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

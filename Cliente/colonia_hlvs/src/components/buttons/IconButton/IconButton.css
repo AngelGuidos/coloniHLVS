@@ -1,0 +1,35 @@
+.slim_button{
+    display: flex;
+    background-color: var(--button-accent);
+    color: var(--text-inverted);
+    padding: 0.5rem 2rem;
+    border-radius: var(--big-rad);
+    font-size: var(--hint-font-size); 
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: none;
+    align-items: center;
+
+    &:hover{
+        background-color: var(--accent);
+        color: var(--text-primary);
+    }
+
+    svg{
+        margin-right: 0.5rem;
+    }
+
+}
+
+
+.slim_button_enabled {
+
+    background-color:var(--button-accent);
+    cursor: pointer;
+  }
+  
+  .slim_button_disabled {
+    background-color: var(--accent);
+    cursor: not-allowed;
+    color: var(--text-inverted);
+  }

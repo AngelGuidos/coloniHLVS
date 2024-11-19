@@ -1,0 +1,39 @@
+.button-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  margin: 10px;
+  background-color: #0d1b2a;
+  color: white;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+
+.button-menu.selected {
+  background-color: #007BFF;
+  color: white;
+}
+
+.button-menu:hover {
+  transform: scale(1.05);
+  background-color: #1b263b;
+}
+
+.button-icon {
+  width: 29px;
+  height: 29px;
+  margin-bottom: 5px;
+}
+
+.button-name {
+  font-size: 15px;
+  text-align: center;
+}
+
+.menu-button.selected {
+  background-color: var(--accent); /* Color diferente cuando el botón está seleccionado */
+}

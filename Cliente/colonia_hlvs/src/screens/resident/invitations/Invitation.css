@@ -1,0 +1,90 @@
+.Left{
+
+    .mauri{
+        justify-content: center;
+    }
+
+    .longText{
+        width: 45vh;
+        
+    }
+
+    .time_pickers{
+        width: 45vh;
+        display: flex;
+        justify-content: space-between;
+        
+    
+        .time{
+            max-width: 22vh;
+        }
+    }
+
+    .input{
+        margin: 20px 0px;
+    }
+
+    .days{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 45vh;
+        
+        .days_helper{
+            font-size:small;
+        }
+    }
+
+    .days_helper{
+        font-size:small;
+        font-weight: 400;
+        max-width: 8vh;
+        align-self: center;
+    }
+
+    .custom_check{
+        margin: 0;
+    }
+
+    .custom_box{
+        width: 30px;
+    }
+    
+}
+
+.fab{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .Left{
+        .custom_box{
+            width: 25px;
+        }
+
+        .days_helper{
+            font-size:x-small;
+            font-weight: 400;
+            max-width: 6vh;
+        }
+
+        .days{
+            max-width: 35vh;
+        }
+
+        .longText{
+            width: 35vh;
+        }
+        .time_pickers{
+            width: 35vh;
+
+            .time{
+                max-width: 16vh;
+            }
+        }
+        .mauri{
+            width: 35vh;
+            justify-content: center;
+        }
+    }
+}

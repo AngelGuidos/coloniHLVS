@@ -1,0 +1,11 @@
+.duracion-config{
+    padding-left: 50px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 2px solid #e0e0e0; */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+
+}

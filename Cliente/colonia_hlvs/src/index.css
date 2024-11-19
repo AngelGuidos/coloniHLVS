@@ -1,0 +1,81 @@
+/* Importando Fuente por defecto */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Aplicado a todos los elementos */
+:root{
+  /* Text */
+  --text-primary: #0d1b2a;
+  --text-secondary: #403D39;
+  --text-inverted: white;
+
+  /* Cards colors */
+  --background-color-invitations: #D2E0FB;
+  --selection-day-color: #535BBD;
+  --status-success: #627254;
+  --status-success-weak: #D2E3C8;
+  --status-wrong: #8F1D14;
+  --status-wrong-weak: #FFA5A5;
+
+  /* Background */
+  --bg-login: rgba(6, 13, 56, 1);
+  --button-accent: #0d1b2a;
+  --accent: #D2E0FB;
+  
+  /* Numbers */
+  --rad: 28px;
+  --big-rad: 100px;
+  --hint-font-size: 1.5vh;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Elementos de bloque */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Cambia la fuente según tus preferencias */
+  font-size: 12px; /* Cambia el tamaño de fuente base según tus preferencias */
+  line-height: 1.6; /* Cambia la altura de línea según tus preferencias */
+  background-color: #ffffff; /* Cambia el color de fondo según tus preferencias */
+  color: var(--text-primary); /* Cambia el color de texto según tus preferencias */
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del texto */
+}
+
+/* Listas */
+ul, ol {
+  list-style: none;
+}
+
+/* Elementos de formulario */
+button,
+input,
+select,
+textarea {
+  font-family: inherit; /* Hereda la fuente */
+  font-size: inherit; /* Hereda el tamaño de fuente */
+}
+
+/* Imágenes */
+img {
+  max-width: 100%; /* Las imágenes no se desbordan de su contenedor */
+  height: auto; /* Mantiene la relación de aspecto de las imágenes */
+}

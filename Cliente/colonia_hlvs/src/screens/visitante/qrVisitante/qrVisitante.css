@@ -1,0 +1,101 @@
+/* Contenedor principal que ocupa toda la altura de la ventana y centra el contenido */
+.fatherVisitanteContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor para el contenido principal que permite el desplazamiento y centra el contenido */
+.homeQr-visitante {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el contenedor izquierdo */
+.Left-visitante {
+  width: 65%;
+  display: flex;
+  background-color: white;
+  justify-content: flex-start; /* Alinea el contenido al principio */
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top: 70px;
+}
+/* Contenedor adicional para centrar los elementos dentro de Left-visitante */
+.lefQr-container {
+  width: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+/* Estilo para el contenedor derecho */
+.Right-visitante {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+/* Estilo para la tarjeta de consejos */
+.Hint-visitante {
+  display: flex;
+  font-size: var(--hint-font-size);
+  background-color: var(--accent);
+  margin-top: 2rem;
+  font-weight: normal;
+  padding: 1rem;
+  width: 100%;
+  flex-flow: row;
+  align-items: center;
+  text-align: left;
+  border-radius: var(--rad);
+}
+
+.Hint-visitante .icon {
+  margin-right: 20px;
+}
+
+/* Estilo para el canvas del QR */
+.myQR-visitante {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .homeQr-visitante {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .Left-visitante,
+  .Right-visitante {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Left-visitante {
+    height: 75%;
+  }
+  .Right-visitante{
+    background-color: aliceblue;
+  }
+}

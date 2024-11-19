@@ -1,0 +1,32 @@
+.login-confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.confirmation-alert {
+  border: 1px solid #007bff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #e9f7ef;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.confirmation-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.confirmation-icon {
+  margin-top: 20px;
+}

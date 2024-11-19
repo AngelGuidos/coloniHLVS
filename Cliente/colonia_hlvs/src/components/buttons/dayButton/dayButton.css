@@ -1,0 +1,23 @@
+.daysContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vh;
+
+}
+
+.dayButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2vh;
+    height: 2vh;
+    background-color: white;
+    border: 1px solid var(--text-primary);
+    border-radius: 100%;
+    font-size: 1.5vh;
+    cursor: pointer;
+    margin: 0;
+    padding: 0%;
+}

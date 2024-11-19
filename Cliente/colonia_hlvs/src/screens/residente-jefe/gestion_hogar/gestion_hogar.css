@@ -1,0 +1,26 @@
+.members {
+    background-color: var(--accent);
+    margin: 20px;
+    padding: 20px;
+    width: 320px;
+    height: 180px;
+    border-radius: var(--rad);
+
+
+    p {
+        color: var(--text-secondary);
+        font-weight: normal;
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}
+
+.samesize {
+    width: 280px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}

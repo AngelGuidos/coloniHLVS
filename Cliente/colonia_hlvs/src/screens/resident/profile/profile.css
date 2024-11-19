@@ -1,0 +1,19 @@
+.dui_field{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--accent);
+    padding: 20px;
+    width: 30vh;
+
+    border-radius: var(--rad);
+    margin: 30px;
+
+    .white{
+        background-color: white;
+    }
+
+    .check_field{
+        margin: 5px;
+    }
+}

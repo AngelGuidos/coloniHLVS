@@ -1,0 +1,15 @@
+.card-container{
+    width: 430px;
+    height: auto;
+    border-radius: 8px;
+    background-color: var(--accent);
+    padding: 1rem;
+}
+
+.down-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    
+}
