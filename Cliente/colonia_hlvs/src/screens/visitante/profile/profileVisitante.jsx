@@ -14,11 +14,16 @@ import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import InsertInvitationRoundedIcon from "@mui/icons-material/InsertInvitationRounded";
 import axios from "../../../api/axios"; // Asegúrate de tener axios importado
 import useAuth from "../../../hooks/useAuth";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
 
 import { Fab, useMediaQuery } from "@mui/material";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 
 function ProfileVisitante() {
+
+  const [isChecked, setIsChecked] = useState(false);
+
   const buttons = [
     {
       icon: <InsertInvitationRoundedIcon />,
@@ -49,6 +54,15 @@ function ProfileVisitante() {
     }
   };
 
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+    if (event.target.checked) {
+        setDui('00000000-0');
+    } else {
+        setDui('');
+    }
+};
+
   const handleRegisterClick = async () => {
     try {
       const response = await axios.post(
@@ -64,7 +78,6 @@ function ProfileVisitante() {
 
       if (response.status === 200) {
         toast.success("DUI actualizado exitosamente!");
-        setDui("");
       } else {
         toast.error("Error al actualizar el DUI.");
       }
@@ -130,6 +143,7 @@ function ProfileVisitante() {
                     className="profileVisitante-text-field"
                     value={dui}
                     onChange={handleDuiChange}
+                    disabled={isChecked}
                     inputProps={{
                       pattern: "^[0-9]{8}-[0-9]$", // Regex for DUI format: 8 digits, a hyphen, and 1 digit
                       maxLength: 10, // 8 digits + 1 hyphen + 1 digit = 10 characters
@@ -138,16 +152,16 @@ function ProfileVisitante() {
                 </div>
               </Box>
               <div>
-                <Checkbox
-                  {...label}
-                  sx={{
-                    color: blue[800],
-                    "&.Mui-checked": {
-                      color: blue[600],
-                    },
-                  }}
-                />{" "}
-                Soy menor de edad
+                <FormControlLabel className="check_field"
+                value="end"
+                control={<Checkbox
+                  sx={{ color: '#0d1b2a', '&.Mui-checked': { color: '#0d1b2a' }, }}
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />}
+                label="Soy menor"
+                labelPlacement="end"
+              />
               </div>
             </div>
             <div className="profileVisitante-button-container">
