@@ -7,9 +7,7 @@ import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 
 //MUI
-import { Fab, TextField, useMediaQuery } from '@mui/material';
-import { LocalizationProvider, TimePicker, DatePicker } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Fab, useMediaQuery } from '@mui/material';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 
 //Styles
@@ -18,6 +16,7 @@ import './Invitation.css';
 import Navbar from '../../../components/navbar/navbar';
 
 import residentButtons from '../../../assets/staticInfo/buttonsArray';
+import InvitationForm from '../../../components/singleInvitation/singleInvitationForm';
 
 function SingleInvitation() {
     const [email, setEmail] = useState('');
@@ -96,42 +95,17 @@ function SingleInvitation() {
             )}
             <div className='father'>
                 <div className='Left'>
-                    <h2 className='mauri'>Solicitar invitación única</h2>
-                    <TextField
-                        variant='outlined'
-                        label='Email'
-                        className='input longText'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker 
-                            className='longText input' 
-                            label='Fecha'
-                            value={date}
-                            onChange={(newValue) => setDate(newValue)}
-                        />
-                    </LocalizationProvider>
-                    <div className='time_pickers'>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <TimePicker
-                                label='Hora Inicio'
-                                className='time input'
-                                value={startTime}
-                                onChange={(newValue) => setStartTime(newValue)}
-                            />
-                            <TimePicker
-                                label='Hora Fin'
-                                className='time input'
-                                value={endTime}
-                                onChange={(newValue) => setEndTime(newValue)}
-                            />
-                        </LocalizationProvider>
-                    </div>
-                    <IconButton 
-                        icon={null} 
-                        text={'Solicitar Invitación'} 
-                        onClick={handleSubmit}
+                    <InvitationForm
+                        title="Solicitar invitación única"
+                        email={email}
+                        setEmail={setEmail}
+                        date={date}
+                        setDate={setDate}
+                        startTime={startTime}
+                        setStartTime={setStartTime}
+                        endTime={endTime}
+                        setEndTime={setEndTime}
+                        onSubmit={handleSubmit}
                     />
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>

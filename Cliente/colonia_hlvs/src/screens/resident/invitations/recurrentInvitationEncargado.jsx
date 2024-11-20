@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import axios from '../../../api/axios';
-import IconButton from '../../../components/buttons/IconButton/IconButton';
 import Menu from '../../../components/menu/menu';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // MUI
-import { Checkbox, FormControlLabel, FormGroup, TextField, useMediaQuery, Fab } from '@mui/material';
-import { LocalizationProvider, TimePicker, DatePicker } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useMediaQuery, Fab } from '@mui/material';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 
 // STYLES
@@ -16,6 +13,7 @@ import './Invitation.css';
 import '../dashboard/dashboard.css';
 import Navbar from '../../../components/navbar/navbar';
 
+import RecurringInvitationForm from '../../../components/recurrentInvitation/recurrentInvitationForm';
 import residentInChargeBtn from '../../../assets/staticInfo/buttonEncargadoArray';
 import useAuth from '../../../hooks/useAuth';
 
@@ -54,7 +52,7 @@ function RecurrntInvitation() {
 
     const handleWeekDayChange = (event) => {
         const { value, checked } = event.target;
-        setWeekDays((prev) => 
+        setWeekDays((prev) =>
             checked ? [...prev, value] : prev.filter((day) => day !== value)
         );
     };
@@ -129,67 +127,24 @@ function RecurrntInvitation() {
             )}
             <div className='father'>
                 <div className='Left'>
-                    <h2 className='mauri'>Crear invitación recurrente</h2>
-                    <TextField
-                        variant='outlined'
-                        label='Email'
-                        className='input longText'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                    <RecurringInvitationForm
+                        email={email}
+                        setEmail={setEmail}
+                        startDate={startDate}
+                        setStartDate={setStartDate}
+                        endDate={endDate}
+                        setEndDate={setEndDate}
+                        startTime={startTime}
+                        setStartTime={setStartTime}
+                        endTime={endTime}
+                        setEndTime={setEndTime}
+                        weekDays={weekDays}
+                        setWeekDays={setWeekDays}
+                        weekDaysOptions={weekDaysOptions}
+                        handleWeekDayChange={handleWeekDayChange}
+                        handleSubmit={handleSubmit}
+                        formTitle="Crear invitación recurrente"
                     />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            className='longText input'
-                            label='Fecha Inicio'
-                            value={startDate}
-                            onChange={(newValue) => setStartDate(newValue)}
-                        />
-                        <DatePicker
-                            className='longText input'
-                            label='Fecha Fin'
-                            value={endDate}
-                            onChange={(newValue) => setEndDate(newValue)}
-                        />
-                    </LocalizationProvider>
-                    <div className='days'>
-                        <p className='days_helper'>Días de la semana</p>
-                        <FormGroup row>
-                            {weekDaysOptions.map((day, index) => (
-                                <FormControlLabel
-                                    key={index}
-                                    value={day.value}
-                                    control={
-                                        <Checkbox
-                                            sx={{ color: '#0d1b2a', '&.Mui-checked': { color: '#0d1b2a' } }}
-                                            className='custom_box'
-                                            checked={weekDays.includes(day.value)}
-                                            onChange={handleWeekDayChange}
-                                        />
-                                    }
-                                    label={day.label}
-                                    labelPlacement='bottom'
-                                    className='custom_check'
-                                />
-                            ))}
-                        </FormGroup>
-                    </div>
-                    <div className='time_pickers'>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <TimePicker
-                                label='Hora inicio'
-                                className='time input'
-                                value={startTime}
-                                onChange={(newValue) => setStartTime(newValue)}
-                            />
-                            <TimePicker
-                                label='Hora fin'
-                                className='time input'
-                                value={endTime}
-                                onChange={(newValue) => setEndTime(newValue)}
-                            />
-                        </LocalizationProvider>
-                    </div>
-                    <IconButton icon={null} text={'Solicitar Invitación'} onClick={handleSubmit} />
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>
                     <Menu buttons={residentInChargeBtn} className='funca' />
