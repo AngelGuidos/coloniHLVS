@@ -22,7 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function QrVisitante() {
   const { id } = useParams();
   const { token } = useAuth();
-  const [timeLeft, setTimeLeft] = useState(180); // 3 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(0);
   const timerRef = useRef(null);
 
   const buttons = [
@@ -41,7 +41,7 @@ function QrVisitante() {
       
       if (response.status === 200 && response.data.data.token) {
         const qrText = response.data.data.token;
-        setTimeLeft(180);
+        setTimeLeft(response.data.data.graceTime * 60); 
         QRCode.toCanvas(
           document.getElementById("canvas-visitante"),
           qrText,
@@ -52,7 +52,7 @@ function QrVisitante() {
               toast.error("Error generando el código QR.");
             } else {
               console.log("¡Código QR generado con éxito!");
-              toast.success("¡Código QR generado con éxito!");
+              // toast.success("¡Código QR generado con éxito!");
             }
           }
         );
@@ -130,9 +130,9 @@ function QrVisitante() {
               para ingresar.
             </div>
             <canvas id="canvas-visitante" className="myQR-visitante" />
-            <div className="countdown-timer">
+            <div className={timeLeft === 0? "countdownAlert": "countdown-timer"}>
             Tiempo restante: {formatTime(timeLeft)}
-          </div>
+            </div>
             <IconButton
               icon={<QrCode2RoundedIcon />}
               text="Refrescar"
