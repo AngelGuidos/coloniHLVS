@@ -29,7 +29,7 @@ function ResidentQr() {
       });
     
       setQrText(response.data.data.token);
-      setTimeLeft(180); // Reset the timer to 3 minutes
+      setTimeLeft(response.data.data.graceTime * 60); // Reset the timer to 3 minutes
     } catch (error) {
       console.error(error);
     }
@@ -39,8 +39,8 @@ function ResidentQr() {
     await fetchQrCode();
     if (qrText) {
         QRCode.toCanvas(document.getElementById('canvas'), qrText, { width: 300 }, function (error) {
-          if (error) console.error(error);
-          else console.log('QR code generated successfully!');
+          // if (error) console.error(error);
+          // else console.log('QR code generated successfully!');
         });
       }
   };
@@ -52,8 +52,8 @@ function ResidentQr() {
   useEffect(() => {
     if (qrText) {
       QRCode.toCanvas(document.getElementById('canvas'), qrText, { width: 300 }, function (error) {
-        if (error) console.error(error);
-        else console.log('QR code generated successfully!');
+        // if (error) console.error(error);
+        // else console.log('QR code generated successfully!');
       });
     }
   }, [qrText]);
@@ -107,7 +107,7 @@ function ResidentQr() {
             Su código QR se ha generado exitosamente, acerquese al escáner para ingresar.
           </div>
           <canvas id='canvas' className='myQR' />
-          <div className="countdown-timer">
+          <div className={timeLeft === 0? "countdownAlert": "countdown-timer"}>
             Tiempo restante: {formatTime(timeLeft)}
           </div>
           <div className='btn-refresh'>

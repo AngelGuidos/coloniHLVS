@@ -53,7 +53,7 @@ public class EntranceController {
 
         try {
             Residence_Token token = userService.registerResidenceToken(user);
-            return GeneralResponse.getResponse(HttpStatus.OK, gracePeriodService.getGraceTimeQR().toString(),new ResidenceTokenDTO(token));
+            return GeneralResponse.getResponse(HttpStatus.OK,new ResidenceTokenDTO(token, gracePeriodService.getGraceTimeQR().toString()));
         } catch (Exception e) {
             e.printStackTrace();
             return GeneralResponse.getResponse("Error generating token");
@@ -80,7 +80,7 @@ public class EntranceController {
 
         try{
             Residence_Token token = invitationService.registerInvitationToken(user, invitation);
-            return GeneralResponse.getResponse(HttpStatus.OK, gracePeriodService.getGraceTimeQR().toString(), new ResidenceTokenDTO(token));
+            return GeneralResponse.getResponse(HttpStatus.OK, new ResidenceTokenDTO(token, gracePeriodService.getGraceTimeQR().toString()));
 
         }catch (Exception e){
             e.printStackTrace();
