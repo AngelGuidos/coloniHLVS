@@ -99,7 +99,7 @@ function AgregarEliminar() {
         <div className="parent">
 
             <div className="navbar">
-                <Navbar />
+                <Navbar menuButtons={buttons}/>
             </div>
 
             <div className="content">

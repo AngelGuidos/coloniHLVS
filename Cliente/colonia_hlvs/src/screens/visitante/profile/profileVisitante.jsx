@@ -106,7 +106,7 @@ function ProfileVisitante() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar menuButtons={buttons}/>
       {matches && (
         <Fab
           size="medium"

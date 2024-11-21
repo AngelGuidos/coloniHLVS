@@ -21,9 +21,31 @@
   }
   
   /* Media queries para hacer el navbar responsive */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .navbar {
       display: none;
     }
+  } */
+
+.drawer{
+  background-color: rgba(0, 0, 0 , 0.5);
+  color-scheme: dark;
+
+  .innerDrawer{
+    background-color: var(--bg-login);
+    color: var(--text-inverted);
+    height: 100%;
+    display: flex;
+    justify-content: top;
+
+    ListItemIcon{
+      color: var(--text-inverted);
+    }
+
+    ListItemText{
+      font-family: 'Poppins', sans-serif;
+    }
+    
   }
+}
   

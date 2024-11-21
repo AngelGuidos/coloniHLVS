@@ -106,7 +106,7 @@ function QrVisitante() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar menuButtons={buttons}/>
       <ToastContainer />
       {matches && (
         <Fab

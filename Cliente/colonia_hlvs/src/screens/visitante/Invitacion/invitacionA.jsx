@@ -79,7 +79,7 @@ function InvitacionA() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar menuButtons={buttons}/>
       {matches && (
         <Fab
           size="medium"

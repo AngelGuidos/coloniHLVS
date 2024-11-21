@@ -236,7 +236,7 @@ function EditarInfoCasa() {
     return (
         <div className="parent">
             <div className="navbar">
-                <Navbar />
+                <Navbar menuButtons={buttons}/>
             </div>
             <div className="content">
                 <h1 className='title'>Administrar Casas</h1>

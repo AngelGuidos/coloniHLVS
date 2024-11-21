@@ -116,7 +116,7 @@ function RecurrntInvitation() {
 
     return (
         <>
-            <Navbar />
+            <Navbar menuButtons={residentButtons}/>
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
                     <WidgetsIcon />

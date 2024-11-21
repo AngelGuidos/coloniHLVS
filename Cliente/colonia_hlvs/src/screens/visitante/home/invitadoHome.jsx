@@ -79,7 +79,7 @@ function InvitadoHome() {
     return (
         <div>
             <ToastContainer />
-            <Navbar />
+            <Navbar menuButtons={buttons}/>
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
                     <WidgetsIcon />

@@ -92,7 +92,7 @@ const Registro_Entradas = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar menuButtons={residentInChargeBtn}/>
             <ToastContainer />
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>

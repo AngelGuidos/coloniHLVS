@@ -88,7 +88,7 @@ function SingleInvitation() {
 
   return (
     <>
-      <Navbar />
+      <Navbar menuButtons={residentInChargeBtn}/>
       {matches && (
         <Fab
           size="medium"

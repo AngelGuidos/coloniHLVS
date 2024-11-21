@@ -87,7 +87,7 @@ function Configuracion() {
     return (
         <div className="parent">
             <div className="navbar">
-                <Navbar />
+                <Navbar menuButtons={buttons}/>
             </div>
             <div className="content">
                 <h1 className='title'>Configuración</h1>
