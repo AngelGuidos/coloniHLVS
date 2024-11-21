@@ -14,6 +14,7 @@ import useAuth from '../../../hooks/useAuth';
 import axios from "../../../api/axios";
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { LogoutRounded } from '@mui/icons-material';
 
 const HomeVigilante = () => {
   const [scanResult, setScanResult] = useState(null);
@@ -153,7 +154,7 @@ const HomeVigilante = () => {
 
   return (
     <div className="containerMain">
-      <Navbar />
+      <Navbar menuButtons={[{ icon: <LogoutRounded />, name: "Cerrar Sesion", path: "/", logout: true }]}/>
       <div className="container-vigi">
         <div className="qr-scanner-container">
           <h2 className="h2-qr">Escanear QR</h2>
@@ -237,7 +238,7 @@ const HomeVigilante = () => {
           </div>
           <div className='btn-buttom-vigi'>
             <button className="btn-vigilate" onClick={handleRegisterClick}>Registrar</button>
-            <button className="btn-vigilate" onClick={handleLogoutClick}>Logout</button>
+            <button className="btn-vigilate phantom" onClick={handleLogoutClick}>Logout</button>
           </div>
         </div>
       </div>
