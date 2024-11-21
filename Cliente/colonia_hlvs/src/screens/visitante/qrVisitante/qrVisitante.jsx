@@ -13,9 +13,6 @@ import { useParams } from "react-router-dom";
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 
-import { Fab, useMediaQuery } from "@mui/material";
-import WidgetsIcon from "@mui/icons-material/Widgets";
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -89,37 +86,10 @@ function QrVisitante() {
     handlerQrCodeChanger();
   }, [id]);
 
-  const fabStyle = {
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    backgroundColor: "#0d1b2a",
-    "&:hover": { backgroundColor: "#D2E0FB" },
-  };
-
-  const matches = useMediaQuery("(max-width:768px)");
-
-  const handleClick = () => {
-    const element = document.getElementById("hastaAbajoBaby");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div>
       <Navbar menuButtons={buttons}/>
       <ToastContainer />
-      {matches && (
-        <Fab
-          size="medium"
-          color="primary"
-          className="fab"
-          aria-label="Ir al menu"
-          sx={fabStyle}
-          onClick={handleClick}
-        >
-          <WidgetsIcon />
-        </Fab>
-      )}
       <div className="father">
         <div className='Left' id='scroller'>
           <div className="lefQr-container">

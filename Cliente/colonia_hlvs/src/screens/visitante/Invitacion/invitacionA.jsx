@@ -13,9 +13,6 @@ import InsertInvitationRoundedIcon from "@mui/icons-material/InsertInvitationRou
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 
-import { Fab, useMediaQuery } from "@mui/material";
-import WidgetsIcon from "@mui/icons-material/Widgets";
-
 const buttons = [
   {
     icon: <InsertInvitationRoundedIcon />,
@@ -62,36 +59,9 @@ function InvitacionA() {
     navigate(`/invitadoHome/invitacion/${id}/mi-qr`);
   }
 
-  const fabStyle = {
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    backgroundColor: "#0d1b2a",
-    "&:hover": { backgroundColor: "#D2E0FB" },
-  };
-
-  const matches = useMediaQuery("(max-width:768px)");
-
-  const handleClick = () => {
-    const element = document.getElementById("hastaAbajoBaby");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div>
       <Navbar menuButtons={buttons}/>
-      {matches && (
-        <Fab
-          size="medium"
-          color="primary"
-          className="fab"
-          aria-label="Ir al menu"
-          sx={fabStyle}
-          onClick={handleClick}
-        >
-          <WidgetsIcon />
-        </Fab>
-      )}
       <div className="father">
         <div className='Left' id='scroller'>
           <h1 className="invitacionA-h1-visitante">Invitación a:</h1>

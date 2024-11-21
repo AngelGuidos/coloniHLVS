@@ -12,9 +12,6 @@ import "./invitadoHome.css";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
-
 
 function InvitadoHome() {
     const buttons = [
@@ -59,32 +56,10 @@ function InvitadoHome() {
         navigate(`/invitadoHome/invitacion/${item.id}`);
     }
 
-    const fabStyle = {
-        position: 'fixed',
-        bottom: 16,
-        right: 16,
-        backgroundColor: '#0d1b2a',
-        '&:hover': { backgroundColor: '#D2E0FB' }
-    };
-
-    const matches = useMediaQuery('(max-width:768px)');
-
-    const handleClick = () => {
-        const element = document.getElementById('hastaAbajoBaby');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
-
-
     return (
         <div>
             <ToastContainer />
             <Navbar menuButtons={buttons}/>
-            {matches && (
-                <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-                    <WidgetsIcon />
-                </Fab>
-            )}
             <div className="father">
                 <div className='Left' id='scroller'>
                     <h2 className="h2-invitation">Tus invitaciones</h2>
