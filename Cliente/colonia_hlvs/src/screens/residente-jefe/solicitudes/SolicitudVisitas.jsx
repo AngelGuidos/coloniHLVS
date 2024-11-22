@@ -10,7 +10,7 @@ import { Fab, useMediaQuery } from '@mui/material';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const dayMapping = {
@@ -123,7 +123,7 @@ const SolicitudVisitas = () => {
     return (
         <>
             <Navbar />
-            <ToastContainer />
+            
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
                     <WidgetsIcon />

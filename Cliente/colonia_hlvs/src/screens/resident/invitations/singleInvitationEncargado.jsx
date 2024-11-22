@@ -1,6 +1,6 @@
 import Menu from "../../../components/menu/menu";
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
@@ -120,7 +120,7 @@ function SingleInvitation() {
           <Menu buttons={residentInChargeBtn} className="funca" />
         </div>
       </div>
-      <ToastContainer />
+    
     </>
   );
 }

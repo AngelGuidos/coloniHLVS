@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../../../api/axios';
 import Menu from '../../../components/menu/menu';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // MUI
@@ -119,7 +119,6 @@ function RecurrntInvitation() {
     return (
         <>
             <Navbar />
-            <ToastContainer />
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
                     <WidgetsIcon />
