@@ -5,8 +5,6 @@ import Menu from '../../../components/menu/menu';
 import QRCode from "qrcode";
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 import QrCode2RoundedIcon from '@mui/icons-material/QrCode2Rounded';
-import { Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
 import Navbar from '../../../components/navbar/navbar';
 import residentButtons from '../../../assets/staticInfo/buttonsArray';
 import residentInChargeBtn from '../../../assets/staticInfo/buttonEncargadoArray';
@@ -76,29 +74,9 @@ function ResidentQr() {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  const fabStyle = {
-    position: 'fixed',
-    bottom: 16,
-    right: 16,
-    backgroundColor: '#0d1b2a',
-    '&:hover': { backgroundColor: '#D2E0FB' }
-  };
-
-  const matches = useMediaQuery('(max-width:768px)');
-
-  const handleClick = () => {
-    const element = document.getElementById('hastaAbajoBaby');
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <>
-      <Navbar />
-      {matches && (
-        <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-          <WidgetsIcon />
-        </Fab>
-      )}
+      <Navbar menuButtons={residentButtons}/>
       <div className='father'>
         <div className='Left'>
           <h2 className='h2-qr'>Tu código-QR</h2>

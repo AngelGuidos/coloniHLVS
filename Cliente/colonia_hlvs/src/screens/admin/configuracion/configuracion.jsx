@@ -86,7 +86,7 @@ function Configuracion() {
 
     return (
         <>
-        <Navbar />
+        <Navbar menuButtons={buttons}/>
         <div className="father">
            
             <div className="Left-2">

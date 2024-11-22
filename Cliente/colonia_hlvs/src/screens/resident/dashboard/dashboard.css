@@ -95,12 +95,13 @@ h4{
             box-sizing: border-box;
         }
         .Right{
-            /* display: none; */
-            height: max-content + 40px;
+            display: none;
+            /* height: max-content + 40px;
             max-height: 80vh;
-            position: relative;
+            position: relative; */
         }
         #stay{
+            display: none;
             height: max-content + 40px;
             max-height: 80vh;
         }

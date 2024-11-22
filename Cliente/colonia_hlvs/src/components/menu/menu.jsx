@@ -4,13 +4,13 @@ import './menu.css'; // Asegúrate de definir estilos aquí
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth  from '../../hooks/useAuth';
+import { Button, Drawer } from '@mui/material';
 
 const Menu = ({ buttons }) => {
   /* función para medir el espacio y contener los botones, según los que genere */
   const [containerHeight, setContainerHeight] = useState('auto');
 
   const { logout } = useAuth();
-
   
 
   useEffect(() => {
@@ -52,6 +52,7 @@ const Menu = ({ buttons }) => {
       ))}
     </div>
   );
+
 };
 
 export default Menu;

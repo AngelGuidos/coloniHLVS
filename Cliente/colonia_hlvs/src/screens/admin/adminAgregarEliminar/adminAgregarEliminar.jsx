@@ -97,11 +97,10 @@ function AgregarEliminar() {
 
     return (
         <>
-        <Navbar />
+        <Navbar menuButtons={buttons}/>
         
         <div className="father">
             <div className="Left-2">
-
                 <h1 id='title'>Gestionar Colonia</h1>
 
                 <h2 id="text">Registro de Casas</h2>

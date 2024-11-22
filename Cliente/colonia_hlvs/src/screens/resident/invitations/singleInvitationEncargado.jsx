@@ -5,10 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 
-//MUI
-import { Fab, useMediaQuery } from "@mui/material";
-import WidgetsIcon from "@mui/icons-material/Widgets";
-
 //Styles
 import "../dashboard/dashboard.css";
 import "./Invitation.css";
@@ -35,21 +31,6 @@ function SingleInvitation() {
       position: "top-right",
       closeOnClick: true,
     });
-  };
-
-  const fabStyle = {
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    backgroundColor: "#0d1b2a",
-    "&:hover": { backgroundColor: "#D2E0FB" },
-  };
-
-  const matches = useMediaQuery("(max-width:768px)");
-
-  const handleClick = () => {
-    const element = document.getElementById("hastaAbajoBaby");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const { token } = useAuth();
@@ -88,19 +69,7 @@ function SingleInvitation() {
 
   return (
     <>
-      <Navbar />
-      {matches && (
-        <Fab
-          size="medium"
-          color="primary"
-          className="fab"
-          aria-label="Ir al menu"
-          sx={fabStyle}
-          onClick={handleClick}
-        >
-          <WidgetsIcon />
-        </Fab>
-      )}
+      <Navbar menuButtons={residentInChargeBtn}/>
       <div className="father">
         <div className="Left">
           <InvitationForm

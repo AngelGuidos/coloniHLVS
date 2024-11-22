@@ -17,7 +17,7 @@ function dashboard() {
 
   return (
     <>
-      <Navbar />
+      <Navbar menuButtons={residentButtons}/>
       <div className="father" id="testDAD">
         <div className="Left">
           <h2> Bienvenido</h2>

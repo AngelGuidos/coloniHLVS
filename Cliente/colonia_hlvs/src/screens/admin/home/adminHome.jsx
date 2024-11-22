@@ -235,7 +235,7 @@ function AdminHome() {
 
   return (
     <>
-    <Navbar />
+    <Navbar menuButtons={buttons}/>
 
       <div>
         <div className="father">

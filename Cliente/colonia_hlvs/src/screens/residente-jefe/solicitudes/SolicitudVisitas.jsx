@@ -6,8 +6,6 @@ import InvitacionUnica from "./InvitacionUnica/InvitacionUnica";
 import InvitacionRecurrente from "./InvitacionRecurrente/InvitacionRecurrente";
 import SolicitudButton from "./AuxButtons/SolicitudButton";
 import Navbar from "../../../components/navbar/navbar";
-import { Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from 'react-toastify';
@@ -105,30 +103,9 @@ const SolicitudVisitas = () => {
         fetchInvitations();
     }, [token]);
 
-    const fabStyle = {
-        position: 'fixed',
-        bottom: 16,
-        right: 16,
-        backgroundColor: '#0d1b2a',
-        '&:hover': { backgroundColor: '#D2E0FB' }
-    };
-
-    const matches = useMediaQuery('(max-width:768px)');
-
-    const handleClick = () => {
-        const element = document.getElementById('hastaAbajoBaby');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <>
-            <Navbar />
-            
-            {matches && (
-                <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-                    <WidgetsIcon />
-                </Fab>
-            )}
+            <Navbar menuButtons={residentInChargeBtn}/>
             <div className='father'>
                 <div className='Left' id='scroller'>
                     <h2 className="scroll_padd">Solicitudes de visita</h2>
