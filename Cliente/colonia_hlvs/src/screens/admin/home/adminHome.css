@@ -1,11 +1,13 @@
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 55px repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+.Left-2{
+    min-width: 65%;
+    height: 100vh;
+    max-height: calc(100vh - 55px);
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    overflow-y: auto;
 }
-    
+
 .navbar { 
     grid-area: 1 / 1 / 2 / 6; 
     height: 55px;
@@ -13,71 +15,35 @@
     top: 0;
     z-index: 1;
 }
-.content { 
-    grid-area: 2 / 1 / 6 / 4;
-} 
 
-.title {
-    color: var(--text-color);
-    padding-left: 50px;
-    padding-top: 20px;
-    font-weight: normal;
-}
-
-.title-r{
-    color: var(--text-color);
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-}
-
-.grafico-container {
-    padding-left: 15px; 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    }
-
-.table-container {
-    padding-left: 50px; 
-    padding-bottom: 20px;
-}
-
-.duracion{
-    padding-left: 50px;
-    padding-bottom: 20px;
+#container{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+    gap: 20px;
 }
-    
 
-.button-update-enabled {
-    background-color: var(--bg-login);
-    width: 25%;
-    height: 40px;
-    font-size: 1rem;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .button-update-disabled {
-    background-color: var(--accent);
-    width: 25%;
-    height: 40px; 
-    font-size: 0.8rem;
-    align-items: center;
-    justify-content: center;
-    cursor: not-allowed;
-    color: black;
-  }
 
-.menu-content { 
-    position: fixed;
-    top: 50%;
-    left: calc(50% + 500px);
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#text{
+    font-size: 22px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#margenes{
+    padding: 20px;
+}
+
+#margenes2{
+    margin-left: -30px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#title{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
 }
 
