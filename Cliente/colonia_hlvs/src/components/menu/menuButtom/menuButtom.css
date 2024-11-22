@@ -3,14 +3,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   margin: 10px;
   background-color: #0d1b2a;
   color: white;
   border-radius: 10px;
   transition: transform 0.2s, background-color 0.2s;
   cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .button-menu.selected {
@@ -32,8 +34,8 @@
 .button-name {
   font-size: 15px;
   text-align: center;
-}
-
-.menu-button.selected {
-  background-color: var(--accent); /* Color diferente cuando el botón está seleccionado */
+  word-wrap: break-word; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  max-width: 100%;
 }
