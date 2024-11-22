@@ -10,6 +10,8 @@ import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ErrorOutlineRounded, ReplayOutlined } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 const dayMapping = {
     MON: 'L',
@@ -110,7 +112,19 @@ const SolicitudVisitas = () => {
                 <div className='Left' id='scroller'>
                     <h2 className="scroll_padd">Solicitudes de visita</h2>
 
-                    {invitaciones.map((invitacion) => {
+                    {invitaciones.length === 0 ? (
+                        <>
+                            <div className='Hint'>
+                                <ErrorOutlineRounded className='icon' />
+                                Actualmente no tienes solicitudes de ningun miembro de tu familia.
+                            </div>
+                            <Button sx={
+                                {color: 'white', backgroundColor: '#0d1b2a', borderRadius: '16px', textTransform: 'none', marginTop: '20px'}
+                                } startIcon={<ReplayOutlined sx={{color: 'r#0d1b2a', margin: '4px'}}/>} onClick={fetchInvitations} >
+                                Recargar solicitudes
+                            </Button>
+                        </>
+                    ) : (invitaciones.map((invitacion) => {
                         if (invitacion.tipo === 'unica') {
                             return (
                                 <div className="card-unica-recurrente" key={invitacion.id}>
@@ -144,7 +158,7 @@ const SolicitudVisitas = () => {
                         } else {
                             return null;
                         }
-                    })}
+                    }))}
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>
                     <Menu buttons={residentInChargeBtn} className='funca' />

@@ -11,6 +11,9 @@ import useAuth from '../../../hooks/useAuth';
 import "./invitadoHome.css";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ErrorOutlineOutlined, Replay10Rounded, ReplayOutlined } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import { color } from "@mui/system";
 
 
 function InvitadoHome() {
@@ -38,7 +41,7 @@ function InvitadoHome() {
                     if (invitationsData && invitationsData.length > 0) {
                         setInvitations(invitationsData);
                     } else {
-                        toast.warning('No tienes invitaciones disponibles');
+                        // toast.warning('No tienes invitaciones disponibles');
                     }
                 } else {
                     toast.error('Error al cargar las invitaciones');
@@ -63,7 +66,19 @@ function InvitadoHome() {
                 <div className='Left' id='scroller'>
                     <h2 className="h2-invitation">Tus invitaciones</h2>
                     <div className="card-style-mt">
-                        {invitations.map((item) => (
+                        {invitations.length === 0 ? (
+                            <>
+                                <div className='Hint'>
+                                    <ErrorOutlineOutlined className='icon' />
+                                    Actualmente no tienes invitacione proximas a nuestra residencia.
+                                </div>
+                                <Button sx={
+                                    {color: 'white', backgroundColor: '#0d1b2a', borderRadius: '16px', textTransform: 'none', marginTop: '20px'}
+                                    } startIcon={<ReplayOutlined sx={{color: 'r#0d1b2a', margin: '4px'}}/>} >
+                                    Recargar invitaciones
+                                </Button>
+                            </>
+                        ) : (invitations.map((item) => (
                             <CardDetail 
                                 key={item.id} 
                                 title={item.houseNumber} 
@@ -72,7 +87,7 @@ function InvitadoHome() {
                                 onClick={() => handleCardClick(item)} 
                                 isSelected={false} 
                             />
-                        ))}
+                        )))}
                     </div>
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>

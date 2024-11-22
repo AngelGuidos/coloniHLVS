@@ -12,7 +12,8 @@ import Navbar from '../../../components/navbar/navbar';
 
 import './InvitacionesJefe.css';
 import { FormControl } from '@mui/base';
-import { MenuItem, Select } from '@mui/material';
+import { Button, MenuItem, Select } from '@mui/material';
+import { ErrorOutlineRounded, ReplayOutlined } from '@mui/icons-material';
 
 const dayMapping = {
     MON: 'L',
@@ -139,6 +140,15 @@ const InvitacionesJefe = () => {
         }
     };
 
+    const handleAux = async (filtered) => {
+
+        if (selectedFilter === 'active') {
+            await fetchActiveInvitations();
+        } else if (selectedFilter === 'past') {
+            await fetchPastInvitations();
+        }
+    }
+
 
     const filteredInvitations = filter === 'active' ? activeInvitations : pastInvitations;
 
@@ -154,7 +164,15 @@ const InvitacionesJefe = () => {
                         </Select>
                     </FormControl>
 
-                    {filteredInvitations.map((invitacion) => {
+                    {filteredInvitations.length === 0 ? (
+                        <>
+                            <div className='Hint'>
+                                <ErrorOutlineRounded className='icon' />
+                                Actualmente no hay ningun registro de invitaciones {filter === 'active' ? 'activas' : 'pasadas'} asociadas tu hogar.
+                            </div>
+                        </>
+                    ) : (
+                        filteredInvitations.map((invitacion) => {
                         if (invitacion.tipo === 'unica' && filter === 'active') {
                             return (
                                 <div className="card-unica-recurrente" key={invitacion.id}>
@@ -214,7 +232,7 @@ const InvitacionesJefe = () => {
                         } else {
                             return null;
                         }
-                    })}
+                    }))}
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>
                     <Menu buttons={residentInChargeBtn} className='funca' />
