@@ -99,7 +99,7 @@ function AdminCasa() {
             <div className="Left-2">
                 <h1 id='title'>Administrar Casas</h1>
                 <div className="button">
-                    <IconButton icon='' text='Agregar / Eliminar casa' onClick={() => navigate('agregar-eliminar')} />
+                    <IconButton text='Agregar / Eliminar casa' onClick={() => navigate('agregar-eliminar')} />
                 </div>
                 <h2 id='text'>Registro de Casas</h2>
                 <div id='margenes'>
