@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 import Menu from "../../../components/menu/menu";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import residentInChargeBtn from '../../../assets/staticInfo/buttonEncargadoArray';
@@ -161,7 +161,7 @@ const InvitacionesJefe = () => {
     return (
         <>
             <Navbar />
-            <ToastContainer />
+
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
                     <WidgetsIcon />

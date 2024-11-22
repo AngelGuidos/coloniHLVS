@@ -4,7 +4,7 @@ import './profile.css';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import Menu from '../../../components/menu/menu';
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 
 //mui
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
@@ -111,7 +111,6 @@ function Profile() {
 
   return (
     <>
-      <ToastContainer />
       <Navbar />
       {matches && (
         <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>

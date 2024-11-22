@@ -16,7 +16,7 @@ import useAuth from '../../../hooks/useAuth';
 import { Fab, useMediaQuery } from "@mui/material";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function QrVisitante() {
@@ -107,7 +107,6 @@ function QrVisitante() {
   return (
     <div>
       <Navbar />
-      <ToastContainer />
       {matches && (
         <Fab
           size="medium"

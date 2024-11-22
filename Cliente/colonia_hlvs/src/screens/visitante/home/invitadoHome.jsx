@@ -9,7 +9,7 @@ import InsertInvitationRoundedIcon from '@mui/icons-material/InsertInvitationRou
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 import "./invitadoHome.css";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Fab, useMediaQuery } from '@mui/material';
@@ -78,7 +78,7 @@ function InvitadoHome() {
 
     return (
         <div>
-            <ToastContainer />
+            
             <Navbar />
             {matches && (
                 <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>

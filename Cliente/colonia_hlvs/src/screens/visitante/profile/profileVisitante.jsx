@@ -7,7 +7,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { blue } from "@mui/material/colors";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import "./profileVisitante.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
@@ -203,7 +203,7 @@ function ProfileVisitante() {
           <Menu buttons={buttons} />
         </div>
       </div>
-      <ToastContainer />
+      
     </div>
   );
 }
