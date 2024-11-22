@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DayButton from '../../../components/buttons/dayButton/dayButton';
 import Menu from '../../../components/menu/menu';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //sTYLES

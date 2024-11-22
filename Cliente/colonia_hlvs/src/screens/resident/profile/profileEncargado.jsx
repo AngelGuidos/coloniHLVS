@@ -2,9 +2,9 @@ import "../dashboard/dashboard.css";
 import '../resident-qr/resident-qr.css';
 import './profile.css';
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from '../../../components/menu/menu';
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 
 //mui
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
@@ -22,6 +22,36 @@ function Profile() {
   const [isChecked, setIsChecked] = useState(false);
   const [textFieldValue, setTextFieldValue] = useState('');
   const { token } = useAuth();
+
+  // Función para obtener información del usuario
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get('/user/whoami', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 200) {
+        const userData = response.data.data;
+        console.log("I'm printing: " + userData.dui);
+
+        if (userData.dui) {
+          setTextFieldValue(userData.dui);
+          if (userData.dui === "00000000-0") {
+            setIsChecked(true);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error al obtener información del usuario:", error);
+      toast.error("Error al cargar información del usuario.");
+    }
+  };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -42,7 +72,7 @@ function Profile() {
       });
 
       if (response.status === 200) {
-        setTextFieldValue('');
+        setTextFieldValue(textFieldValue);
         toast.success("DUI actualizado exitosamente!");
       } else {
         toast.error("Error al actualizar el DUI.");
@@ -64,7 +94,6 @@ function Profile() {
 
   return (
     <>
-      <ToastContainer />
       <Navbar menuButtons={residentInChargeBtn}/>
       <div className="father" id="testDAD">
         <div className="Left">

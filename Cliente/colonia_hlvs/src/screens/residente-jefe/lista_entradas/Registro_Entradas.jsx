@@ -9,7 +9,7 @@ import { Fab, useMediaQuery } from '@mui/material';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Registro_Entradas = () => {
@@ -78,7 +78,6 @@ const Registro_Entradas = () => {
     return (
         <>
             <Navbar menuButtons={residentInChargeBtn}/>
-            <ToastContainer />
             <div className='father'>
                 <div className='Left'>
                     <h2>Registro entrada a casa</h2>

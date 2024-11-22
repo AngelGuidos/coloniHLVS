@@ -6,7 +6,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import ConfirmationView from "../../../components/estados/Confirmacion/ConfirmationView"; // Asegúrate de que la ruta sea correcta
 import DeniedView from '../../../components/estados/Denegado/DeniedView';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./homeVigilante.css";
 import { useNavigate } from "react-router-dom";
@@ -118,7 +118,8 @@ const HomeVigilante = () => {
       name,
       DUI: dui,
       comment,
-      houseNumber
+      houseNumber,
+      door
     };
 
     try {
@@ -242,7 +243,6 @@ const HomeVigilante = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

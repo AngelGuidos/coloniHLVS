@@ -8,7 +8,7 @@ import SolicitudButton from "./AuxButtons/SolicitudButton";
 import Navbar from "../../../components/navbar/navbar";
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const dayMapping = {
@@ -106,7 +106,6 @@ const SolicitudVisitas = () => {
     return (
         <>
             <Navbar menuButtons={residentInChargeBtn}/>
-            <ToastContainer />
             <div className='father'>
                 <div className='Left' id='scroller'>
                     <h2 className="scroll_padd">Solicitudes de visita</h2>

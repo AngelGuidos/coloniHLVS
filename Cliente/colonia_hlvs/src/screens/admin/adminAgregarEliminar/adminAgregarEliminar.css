@@ -1,13 +1,10 @@
 .opciones-casa-container {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 20px;
+    gap: 20px;
     padding-bottom: 30px;
+    flex-wrap: wrap;
   }
   
-  .agregar {
-    display: flex;
-    flex-direction: column;
-    align-items: start; 
-    gap: 10px;
-  }

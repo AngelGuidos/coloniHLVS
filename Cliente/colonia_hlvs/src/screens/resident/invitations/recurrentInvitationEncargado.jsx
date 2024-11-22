@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../../../api/axios';
 import Menu from '../../../components/menu/menu';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // STYLES
@@ -100,7 +100,6 @@ function RecurrntInvitation() {
     return (
         <>
             <Navbar menuButtons={residentInChargeBtn}/>
-            <ToastContainer />
             <div className='father'>
                 <div className='Left'>
                     <RecurringInvitationForm

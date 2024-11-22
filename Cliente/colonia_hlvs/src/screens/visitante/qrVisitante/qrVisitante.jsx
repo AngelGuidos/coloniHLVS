@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function QrVisitante() {
@@ -89,7 +89,6 @@ function QrVisitante() {
   return (
     <div>
       <Navbar menuButtons={buttons}/>
-      <ToastContainer />
       <div className="father">
         <div className='Left' id='scroller'>
           <div className="lefQr-container">

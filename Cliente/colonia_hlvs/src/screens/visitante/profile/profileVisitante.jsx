@@ -7,9 +7,9 @@ import Checkbox from "@mui/material/Checkbox";
 import { blue } from "@mui/material/colors";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import "./profileVisitante.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import InsertInvitationRoundedIcon from "@mui/icons-material/InsertInvitationRounded";
 import axios from "../../../api/axios"; // Asegúrate de tener axios importado
@@ -20,6 +20,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 function ProfileVisitante() {
 
   const [isChecked, setIsChecked] = useState(false);
+  const [dui, setDui] = useState("");
+  const { token } = useAuth();
 
   const buttons = [
     {
@@ -40,8 +42,30 @@ function ProfileVisitante() {
     },
   ];
 
-  const { token } = useAuth();
-  const [dui, setDui] = useState("");
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("/user/whoami", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.status === 200 && response.data.data) {
+          const userDui = response.data.data.dui;
+          if (userDui === "00000000-0") {
+            setIsChecked(true);
+            setDui("00000000-0");
+          } else if (userDui) {
+            setDui(userDui);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, [token]);
 
   const handleDuiChange = (event) => {
     const value = event.target.value;
@@ -74,6 +98,7 @@ function ProfileVisitante() {
       );
 
       if (response.status === 200) {
+        setDui(dui);
         toast.success("DUI actualizado exitosamente!");
       } else {
         toast.error("Error al actualizar el DUI.");
@@ -148,7 +173,7 @@ function ProfileVisitante() {
           <Menu buttons={buttons} />
         </div>
       </div>
-      <ToastContainer />
+      
     </div>
   );
 }

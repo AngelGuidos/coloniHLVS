@@ -9,7 +9,7 @@ import InsertInvitationRoundedIcon from '@mui/icons-material/InsertInvitationRou
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 import "./invitadoHome.css";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -58,7 +58,6 @@ function InvitadoHome() {
 
     return (
         <div>
-            <ToastContainer />
             <Navbar menuButtons={buttons}/>
             <div className="father">
                 <div className='Left' id='scroller'>
