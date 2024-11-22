@@ -144,7 +144,6 @@ function Profile() {
         <div id="hastaAbajoBaby" className="Right">
           <Menu buttons={residentButtons} className="funca" />
         </div>
-      </div>
     </>
   );
 }
