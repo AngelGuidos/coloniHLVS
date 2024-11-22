@@ -46,6 +46,11 @@
       font-family: 'Poppins', sans-serif;
     }
     
+    .email-display{
+      align-self: center;
+      justify-content: center;
+    }
+
   }
 }
   

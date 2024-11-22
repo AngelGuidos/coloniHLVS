@@ -30,7 +30,13 @@ function Navbar( {menuButtons} ) {
 
   const drawerList = (
     <Box sx={{ width: 280, flexDirection: 'column' }} role="presentation" onClick={toggleDrawer(false)} className="innerDrawer">
-      <Avatar alt={user ? user.name : 'Photo'} src={user ? user.photoURL : 'UK'} sx={{ width: 50, height: 50, margin: '15px' }}/>
+      <Box sx={{display: 'flex', flexDirection: 'row', margin: '15px'}}>
+        <Avatar alt={user ? user.name : 'Photo'} src={localStorage.getItem('picture')} sx={{ width: 50, height: 50, margin: '0px' }}/>
+        <Box sx={{justifyContent: 'center', display: 'flex', flexDirection: 'column', alignContent: 'center'}}>
+          <h4>{user ? user.name : 'unknow'}</h4>
+          <h5 className='email-display'>{user ? user.email : 'unkown@xd.com'}</h5>
+        </Box>
+      </Box>
       <List>
       {menuButtons.map((button, index) => (
         <ListItem key={button.name} disablePadding >

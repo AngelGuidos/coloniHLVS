@@ -54,6 +54,8 @@ const Login = () => {
             token: access_token,
           }
         );
+        // console.log(data.data.picture);
+        localStorage.setItem("picture", data.data.picture);
         const token = data.data.token;
         localStorage.setItem("jwt_authorization", token);
         await login(token);
