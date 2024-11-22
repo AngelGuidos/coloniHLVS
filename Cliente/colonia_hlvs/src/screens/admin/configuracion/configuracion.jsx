@@ -85,13 +85,13 @@ function Configuracion() {
     
 
     return (
-        <div className="parent">
-            <div className="navbar">
-                <Navbar />
-            </div>
-            <div className="content">
-                <h1 className='title'>Configuración</h1>
-                <h1 className='title-r'>Tiempo de gracia de QR</h1>
+        <>
+        <Navbar />
+        <div className="father">
+           
+            <div className="Left-2">
+                <h1 id='title'>Configuración</h1>
+                <h2 id="text">Tiempo de gracia de QR</h2>
                 <div className='duracion-config'>
                     <QuantityInput value={qrGracePeriod} onChange={(e, newValue) => {
                         setQrGracePeriod(newValue);
@@ -100,7 +100,7 @@ function Configuracion() {
                     <IconButton className={isQrUpdated ? 'button-update-enabled' : 'button-update-disabled'}
                         icon='' text='Actualizar' onClick={handleQrUpdateClick} disabled={!isQrUpdated} />
                 </div>
-                <h1 className='title-r'>Tiempo de vigencia de entradas</h1>
+                <h2 id='text'>Tiempo de vigencia de entradas</h2>
                 <div className='duracion-config'>
                     <QuantityInput value={entranceGracePeriod} onChange={(e, newValue) => {
                         setEntranceGracePeriod(newValue);
@@ -110,10 +110,11 @@ function Configuracion() {
                         icon='' text='Actualizar' onClick={handleEntranceUpdateClick} disabled={!isEntranceUpdated} />
                 </div>
             </div>
-            <div className="menu-content">
+            <div className="Right">
                 <Menu buttons={buttons} />
             </div>
         </div>
+        </>
     );
 }
 
