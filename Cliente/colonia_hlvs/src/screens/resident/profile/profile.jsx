@@ -122,27 +122,9 @@ function Profile() {
             </div>
             <IconButton text={'Guardar Informacion'} onClick={handleRegisterClick} />
           </div>
-          <div className="dui_field">
-            <TextField className="white" label='DUI' disabled={isChecked} value={textFieldValue}
-              onChange={handleTextFieldChange}
-              inputProps={{ maxLength: 10 }}
-              placeholder="00000000-0"
-            />
-            <FormControlLabel className="check_field"
-              value="end"
-              control={<Checkbox
-                sx={{ color: '#0d1b2a', '&.Mui-checked': { color: '#0d1b2a' }, }}
-                checked={isChecked}
-                onChange={handleCheckboxChange}
-              />}
-              label="Soy menor"
-              labelPlacement="end"
-            />
+          <div className="Right">
+            <Menu buttons={residentButtons} className="funca" />
           </div>
-          <IconButton text={'Guardar Informacion'} onClick={handleRegisterClick} />
-        </div>
-        <div id="hastaAbajoBaby" className="Right">
-          <Menu buttons={residentButtons} className="funca" />
         </div>
     </>
   );
