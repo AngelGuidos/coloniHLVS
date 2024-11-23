@@ -56,7 +56,7 @@ function SingleInvitation() {
                 clearForm();
             }
         } catch (error) {
-            notifyError('Error al solicitar la invitación');
+            notifyError('Error al solicitar la invitación, revisa los datos ingresados');
         }
     };
     const clearForm = () => {

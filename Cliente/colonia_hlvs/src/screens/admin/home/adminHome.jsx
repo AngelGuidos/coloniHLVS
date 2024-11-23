@@ -155,7 +155,7 @@ function AdminHome() {
       fetchVigilantes();
     } catch (error) {
       console.error("Error adding vigilante", error);
-      toast.error("Error al agregar vigilante");
+      toast.error("Error al agregar vigilante, el usuario debe de estar registrado.");
     }
   };
 

@@ -47,9 +47,6 @@ const SolicitudVisitas = () => {
                 }));
                 setInvitaciones(fetchedInvitations);
 
-                if (fetchedInvitations.length === 0) {
-                    toast.warn('No hay solicitudes de visita');
-                }
             }
         } catch (error) {
             toast.error('Error fetching active invitations');

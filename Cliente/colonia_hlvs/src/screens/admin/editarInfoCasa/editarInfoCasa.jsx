@@ -88,7 +88,7 @@ function EditarInfoCasa() {
         } catch (error) {
             console.error('Error adding member to house:', error);
             setNuevoResidente('');
-            toast.error('Error al agregar miembro a la casa.');
+            toast.error('Error al agregar miembro a la casa, el usuario debe de estar registrado.');
         }
     };
 

@@ -91,9 +91,7 @@ const InvitacionesJefe = () => {
                 }));
                 setActiveInvitations(fetchedInvitations);
 
-                if (fetchedInvitations.length === 0) {
-                    toast.warn('No hay invitaciones activas');
-                }
+                
             }
         } catch (error) {
             notifyError('Error fetching active invitations');

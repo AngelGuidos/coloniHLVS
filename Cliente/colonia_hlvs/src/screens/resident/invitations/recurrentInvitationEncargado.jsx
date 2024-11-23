@@ -88,11 +88,9 @@ function RecurrntInvitation() {
             if (response.status === 200) {
                 limpiarForm();
                 notifySuccess();
-            } else {
-                notifyError('Error al solicitar la invitación');
             }
         } catch (error) {
-            notifyError('Error al solicitar la invitación');
+            notifyError('Error al solicitar la invitación, revisa los datos ingresados');
             console.error('Error al solicitar la invitación:', error);
         }
     };

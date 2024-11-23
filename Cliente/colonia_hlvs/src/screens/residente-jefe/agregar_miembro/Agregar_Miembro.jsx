@@ -45,7 +45,7 @@ const Agregar_Miembro = () => {
                     Contador: index + 1,
                     Nombre: member.user.name,
                     email: member.user.email,
-                    isManager: member.manager  // Almacenar si el usuario es manager
+                    isManager: member.manager  
                 }));
 
                 const emptySlots = houseData.capacity - members.length;
@@ -127,7 +127,7 @@ const Agregar_Miembro = () => {
 
         } catch (error) {
             console.error('Error adding member:', error);
-            toast.error("Error al agregar residente");
+            toast.error("Error al agregar residente, el usuario debe de estar registrado");
         }
     };
 
@@ -188,7 +188,7 @@ const Agregar_Miembro = () => {
                             <div className='text-field-agregar'>
                                 <TextField
                                     id="outlined-basic"
-                                    label="Nombre del Residente"
+                                    label="Email del Residente"
                                     variant="outlined"
                                     onChange={handleResidenteChange}
                                     value={nuevoResidente}
