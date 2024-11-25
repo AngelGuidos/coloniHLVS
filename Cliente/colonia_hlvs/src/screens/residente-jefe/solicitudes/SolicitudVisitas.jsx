@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ErrorOutlineRounded, ReplayOutlined } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import IconButton from "../../../components/buttons/IconButton/IconButton";
 
 const dayMapping = {
     MON: 'L',
@@ -115,11 +116,7 @@ const SolicitudVisitas = () => {
                                 <ErrorOutlineRounded className='icon' />
                                 Actualmente no tienes solicitudes de ningun miembro de tu familia.
                             </div>
-                            <Button sx={
-                                {color: 'white', backgroundColor: '#0d1b2a', borderRadius: '16px', textTransform: 'none', marginTop: '20px'}
-                                } startIcon={<ReplayOutlined sx={{color: 'r#0d1b2a', margin: '4px'}}/>} onClick={fetchInvitations} >
-                                Recargar solicitudes
-                            </Button>
+                            <IconButton icon={<ReplayOutlined />} onClick={() => fetchInvitations()} text={'Recargar solicitudes'} className={'margin'}/>
                         </>
                     ) : (invitaciones.map((invitacion) => {
                         if (invitacion.tipo === 'unica') {
