@@ -6,12 +6,13 @@ import InvitacionUnica from "./InvitacionUnica/InvitacionUnica";
 import InvitacionRecurrente from "./InvitacionRecurrente/InvitacionRecurrente";
 import SolicitudButton from "./AuxButtons/SolicitudButton";
 import Navbar from "../../../components/navbar/navbar";
-import { Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
 import axios from "../../../api/axios";
 import useAuth from "../../../hooks/useAuth";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ErrorOutlineRounded, ReplayOutlined } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import IconButton from "../../../components/buttons/IconButton/IconButton";
 
 const dayMapping = {
     MON: 'L',
@@ -47,9 +48,6 @@ const SolicitudVisitas = () => {
                 }));
                 setInvitaciones(fetchedInvitations);
 
-                if (fetchedInvitations.length === 0) {
-                    toast.warn('No hay solicitudes de visita');
-                }
             }
         } catch (error) {
             toast.error('Error fetching active invitations');
@@ -105,35 +103,22 @@ const SolicitudVisitas = () => {
         fetchInvitations();
     }, [token]);
 
-    const fabStyle = {
-        position: 'fixed',
-        bottom: 16,
-        right: 16,
-        backgroundColor: '#0d1b2a',
-        '&:hover': { backgroundColor: '#D2E0FB' }
-    };
-
-    const matches = useMediaQuery('(max-width:768px)');
-
-    const handleClick = () => {
-        const element = document.getElementById('hastaAbajoBaby');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <>
-            <Navbar />
-            <ToastContainer />
-            {matches && (
-                <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-                    <WidgetsIcon />
-                </Fab>
-            )}
+            <Navbar menuButtons={residentInChargeBtn}/>
             <div className='father'>
                 <div className='Left' id='scroller'>
                     <h2 className="scroll_padd">Solicitudes de visita</h2>
 
-                    {invitaciones.map((invitacion) => {
+                    {invitaciones.length === 0 ? (
+                        <>
+                            <div className='Hint'>
+                                <ErrorOutlineRounded className='icon' />
+                                Actualmente no tienes solicitudes de ningun miembro de tu familia.
+                            </div>
+                            <IconButton icon={<ReplayOutlined />} onClick={() => fetchInvitations()} text={'Recargar solicitudes'} className={'margin'}/>
+                        </>
+                    ) : (invitaciones.map((invitacion) => {
                         if (invitacion.tipo === 'unica') {
                             return (
                                 <div className="card-unica-recurrente" key={invitacion.id}>
@@ -167,7 +152,7 @@ const SolicitudVisitas = () => {
                         } else {
                             return null;
                         }
-                    })}
+                    }))}
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>
                     <Menu buttons={residentInChargeBtn} className='funca' />

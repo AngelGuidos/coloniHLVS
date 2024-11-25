@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 import Menu from "../../../components/menu/menu";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import residentInChargeBtn from '../../../assets/staticInfo/buttonEncargadoArray';
@@ -12,8 +12,8 @@ import Navbar from '../../../components/navbar/navbar';
 
 import './InvitacionesJefe.css';
 import { FormControl } from '@mui/base';
-import { MenuItem, Select, Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
+import { Button, MenuItem, Select } from '@mui/material';
+import { ErrorOutlineRounded, ReplayOutlined } from '@mui/icons-material';
 
 const dayMapping = {
     MON: 'L',
@@ -91,9 +91,7 @@ const InvitacionesJefe = () => {
                 }));
                 setActiveInvitations(fetchedInvitations);
 
-                if (fetchedInvitations.length === 0) {
-                    toast.warn('No hay invitaciones activas');
-                }
+                
             }
         } catch (error) {
             notifyError('Error fetching active invitations');
@@ -140,33 +138,21 @@ const InvitacionesJefe = () => {
         }
     };
 
+    const handleAux = async (filtered) => {
+
+        if (selectedFilter === 'active') {
+            await fetchActiveInvitations();
+        } else if (selectedFilter === 'past') {
+            await fetchPastInvitations();
+        }
+    }
+
 
     const filteredInvitations = filter === 'active' ? activeInvitations : pastInvitations;
 
-    const fabStyle = {
-        position: 'fixed',
-        bottom: 16,
-        right: 16,
-        backgroundColor: '#0d1b2a',
-        '&:hover': { backgroundColor: '#D2E0FB' }
-    };
-
-    const matches = useMediaQuery('(max-width:768px)');
-
-    const handleClick = () => {
-        const element = document.getElementById('hastaAbajoBaby');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <>
-            <Navbar />
-            <ToastContainer />
-            {matches && (
-                <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-                    <WidgetsIcon />
-                </Fab>
-            )}
+            <Navbar menuButtons={residentInChargeBtn}/>
             <div className='father'>
                 <div className='Left' id='scroller'>
                     <FormControl>
@@ -176,7 +162,15 @@ const InvitacionesJefe = () => {
                         </Select>
                     </FormControl>
 
-                    {filteredInvitations.map((invitacion) => {
+                    {filteredInvitations.length === 0 ? (
+                        <>
+                            <div className='Hint'>
+                                <ErrorOutlineRounded className='icon' />
+                                Actualmente no hay ningun registro de invitaciones {filter === 'active' ? 'activas' : 'pasadas'} asociadas tu hogar.
+                            </div>
+                        </>
+                    ) : (
+                        filteredInvitations.map((invitacion) => {
                         if (invitacion.tipo === 'unica' && filter === 'active') {
                             return (
                                 <div className="card-unica-recurrente" key={invitacion.id}>
@@ -236,7 +230,7 @@ const InvitacionesJefe = () => {
                         } else {
                             return null;
                         }
-                    })}
+                    }))}
                 </div>
                 <div className='Right' id='hastaAbajoBaby'>
                     <Menu buttons={residentInChargeBtn} className='funca' />

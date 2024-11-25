@@ -92,24 +92,26 @@ function AdminCasa() {
 
 
     return (
-        <div className="parent">
-            <div className="navbar">
-                <Navbar />
-            </div>
-            <div className="content">
-                <h1 className='title'>Administrar Casas</h1>
-                <div className="text-field">
-                    <IconButton className="button-panel-admin" icon='' text='Agregar / Eliminar casa' onClick={() => navigate('agregar-eliminar')} />
+        <>
+        <Navbar menuButtons={buttons}/>
+        <div className="father">            
+            
+            <div className="Left-2">
+                <h1 id='title'>Administrar Casas</h1>
+                <div className="button">
+                    <IconButton text='Agregar / Eliminar casa' onClick={() => navigate('agregar-eliminar')} />
                 </div>
-                <h1 className="title-r">Registro de Casas</h1>
-                <div className="table-card-container">
+                <h2 id='text'>Registro de Casas</h2>
+                <div id='margenes'>
                     <DataGridDemo columns={columns} rows={rows} />
                 </div>
             </div>
-            <div className="menu-content">
+            <div className="Right">
                 <Menu buttons={buttons} />
             </div>
-        </div>
+            </div>
+        </>
+    
     );
 }
 

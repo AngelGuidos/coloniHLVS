@@ -96,37 +96,36 @@ function AgregarEliminar() {
       ];
 
     return (
-        <div className="parent">
+        <>
+        <Navbar menuButtons={buttons}/>
+        
+        <div className="father">
+            <div className="Left-2">
+                <h1 id='title'>Gestionar Colonia</h1>
 
-            <div className="navbar">
-                <Navbar />
-            </div>
+                <h2 id="text">Registro de Casas</h2>
 
-            <div className="content">
-
-                <h1 className='title'>Gestionar Colonia</h1>
-
-                <h1 className="title-r">Resgitro de Casas</h1>
-
-                <div className="table-card-container">
+                <div id="margenes">
                     <DataGridDemo columns={columns} rows={rows} />
                 </div>
 
                 <div className="opciones-casa-container">
-                    <div className='agregar'>
+                    <div >
                         <BasicCard fetchHouses={fetchHouses} />
                     </div>
 
-                    <div className='eliminar'>
+                    <div >
                         <SingleTextFieldCard fetchHouses={fetchHouses} />
                     </div>
                 </div>
             </div>
 
-            <div className="menu-content">
+            <div className="Right">
                 <Menu buttons={buttons} />
             </div>
 
         </div>
+
+        </>
     )
 } export default AgregarEliminar;

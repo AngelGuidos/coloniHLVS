@@ -8,8 +8,6 @@ import { useState } from 'react';
 import DataGridDemo from '../../../components/table/table';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { toast } from 'react-toastify';
-import { Fab, useMediaQuery } from '@mui/material';
-import WidgetsIcon from '@mui/icons-material/Widgets';
 
 import useAuth from '../../../hooks/useAuth';
 import { useEffect } from 'react';
@@ -47,7 +45,7 @@ const Agregar_Miembro = () => {
                     Contador: index + 1,
                     Nombre: member.user.name,
                     email: member.user.email,
-                    isManager: member.manager  // Almacenar si el usuario es manager
+                    isManager: member.manager  
                 }));
 
                 const emptySlots = houseData.capacity - members.length;
@@ -129,7 +127,7 @@ const Agregar_Miembro = () => {
 
         } catch (error) {
             console.error('Error adding member:', error);
-            toast.error("Error al agregar residente");
+            toast.error("Error al agregar residente, el usuario debe de estar registrado");
         }
     };
 
@@ -173,29 +171,9 @@ const Agregar_Miembro = () => {
 
     ];
 
-    const fabStyle = {
-        position: 'fixed',
-        bottom: 16,
-        right: 16,
-        backgroundColor: '#0d1b2a',
-        '&:hover': { backgroundColor: '#D2E0FB' }
-    };
-
-    const matches = useMediaQuery('(max-width:768px)');
-
-    const handleClick = () => {
-        const element = document.getElementById('hastaAbajoBaby');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <>
-            <Navbar />
-            {matches && (
-                <Fab size='medium' color='primary' className='fab' aria-label='Ir al menu' sx={fabStyle} onClick={handleClick}>
-                    <WidgetsIcon />
-                </Fab>
-            )}
+            <Navbar menuButtons={residentInChargeBtn}/>
             <div className='father'>
                 <div className='Left'>
                     <h2>Agregar miembro</h2>
@@ -210,7 +188,7 @@ const Agregar_Miembro = () => {
                             <div className='text-field-agregar'>
                                 <TextField
                                     id="outlined-basic"
-                                    label="Nombre del Residente"
+                                    label="Email del Residente"
                                     variant="outlined"
                                     onChange={handleResidenteChange}
                                     value={nuevoResidente}

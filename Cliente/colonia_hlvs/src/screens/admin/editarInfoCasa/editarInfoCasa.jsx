@@ -88,7 +88,7 @@ function EditarInfoCasa() {
         } catch (error) {
             console.error('Error adding member to house:', error);
             setNuevoResidente('');
-            toast.error('Error al agregar miembro a la casa.');
+            toast.error('Error al agregar miembro a la casa, el usuario debe de estar registrado.');
         }
     };
 
@@ -234,31 +234,41 @@ function EditarInfoCasa() {
     ];
 
     return (
-        <div className="parent">
-            <div className="navbar">
-                <Navbar />
-            </div>
-            <div className="content">
-                <h1 className='title'>Administrar Casas</h1>
-                <h1 className="title-r">Informacion sobre la Casa</h1>
+        <>
+        <Navbar menuButtons={buttons}/>
+
+        <div className="father">
+            <div className="Left-2">
+                <h1 id='title'>Administrar Casas</h1>
+                <h2 id='text'>Información sobre la Casa</h2>
                 <div className="info-casa-container">
                     <CardContent className='CardContent'>
                         <div className='casa-edit'>
-                            <h1 className='casa-title'>Casa #{houseNumber}</h1>
+                            <h2 id='text'>Casa #{houseNumber}</h2>
                             <IconButton className="icon-edit-info" icon={<EditIcon />} onClick={handleEditClick} />
                         </div>
-                        <div className='casa-info-responsable'>
-                            <h2 className='casa-responsable'>Residente Responsable</h2>
+
+                        <div>
+                            <div className='casa-info-responsable'>
+                                <h2 className='titulo'>Residente Responsable</h2>
                             {editMode ? (
                                 <TextField value={tempResidente} onChange={handleResidenteChangeEdit} />
+                                
                             ) : (
-                                <p>{residente}</p>
+                                <p>{residente || 'No hay un residente asignado'}</p>
                             )}
+
+                            </div>
                         </div>
+
                         <div className='casa-info-capacidad'>
-                            <h2 className='casa-capacity'>Capacidad de la Casa</h2>
+                            <div>
+                                <h2 className='titulo'>Capacidad de la Casa</h2>
+                            </div>
                             {editMode ? (
+                                <div className='casa-info-cambio'>
                                 <TextField type='number' onChange={handleCapacidadChange} value={tempCapacidad} />
+                                </div>
                             ) : (
                                 <p className='capacidad'>{capacidad}</p>
                             )}
@@ -270,32 +280,34 @@ function EditarInfoCasa() {
                         )}
                     </CardContent>
                 </div>
-                <div className="info-casa-container-residentes">
-                    <CardContent className='CardContent'>
-                        <div className='casa-edit-residentes'>
-                            <h1 className='casa-title'>Residentes de la Casa</h1>
-                        </div>
-                        <div className='casa-info-responsable-tabla'>
-                            <DataGridDemo className="formato" columns={columns} rows={rows} />
-                        </div>
-                    </CardContent>
-                </div>
+
                 <div className="agregar-residente">
                     <CardContent className='CardContent'>
                         <div className='casa-edit-residentes'>
-                            <h1 className='casa-title'>Agregar Residente</h1>
+                            <h2 id='text'>Agregar Residente</h2>
                         </div>
                         <div className='text-field-agregar'>
                             <TextField id="outlined-basic" label="Email del Residente" variant="outlined" onChange={handleResidenteChange} value={nuevoResidente} />
-                            <IconButton className="icon-save-info" text={"Guardar"} onClick={handleGuardarResidente} />
+                            <div className='boton-guardar'>
+                                <IconButton className="icon-save-info" text={"Guardar"} onClick={handleGuardarResidente} />
+                            </div>
                         </div>
                     </CardContent>
                 </div>
+
+                <h2 id='text'>Residentes de la Casa</h2>
+                <div>
+                    <CardContent className='CardContent'>
+                            <DataGridDemo className="formato" columns={columns} rows={rows} />
+                    </CardContent>
+                </div>
+                
             </div>
-            <div className="menu-content">
+            <div className="Right">
                 <Menu buttons={buttons} />
             </div>
         </div>
+        </>
     );
 }
 

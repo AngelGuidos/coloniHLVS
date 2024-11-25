@@ -6,7 +6,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import ConfirmationView from "../../../components/estados/Confirmacion/ConfirmationView"; // Asegúrate de que la ruta sea correcta
 import DeniedView from '../../../components/estados/Denegado/DeniedView';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./homeVigilante.css";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import useAuth from '../../../hooks/useAuth';
 import axios from "../../../api/axios";
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { LogoutRounded } from '@mui/icons-material';
 
 const HomeVigilante = () => {
   const [scanResult, setScanResult] = useState(null);
@@ -26,6 +27,9 @@ const HomeVigilante = () => {
   const [qrError, setQrError] = useState(false);
   const [door, setDoor] = useState(1);
   const doorRef = useRef(door);
+  const [errors, setErrors] = useState({});
+  const [houses, setHouses] = useState([]);
+
 
   const navigate = useNavigate();
   const { logout, token } = useAuth();
@@ -33,9 +37,9 @@ const HomeVigilante = () => {
   const validateEntrance = async (res_token) => {
     console.log("Sending request with door:", doorRef.current);
     try {
-      const response = await axios.post('/entrance/validate-entrance', { 
-        token: res_token, 
-        door: doorRef.current 
+      const response = await axios.post('/entrance/validate-entrance', {
+        token: res_token,
+        door: doorRef.current
       }, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -56,6 +60,37 @@ const HomeVigilante = () => {
     }
   };
 
+  const validateFields = () => {
+    const newErrors = {};
+
+    // Validar campos vacíos
+    if (!name.trim()) newErrors.name = "Campo nombre vacío";
+    if (!houseNumber.trim()) newErrors.houseNumber = "Campo número de casa vacío";
+    if (!dui.trim()) newErrors.dui = "Campo DUI vacío";
+    if (!comment.trim()) newErrors.comment = "Campo comentario vacío";
+
+    // Validar formato
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const houseNumberRegex = /^[a-zA-Z0-9\s]+$/;
+    const duiRegex = /^[0-9]{8}-[0-9]{1}$/;
+    const commentRegex = /^[a-zA-Z0-9\s]+$/;
+
+    if (name && !nameRegex.test(name)) newErrors.name = "Solo se permiten letras";
+    if (houseNumber && !houseNumberRegex.test(houseNumber)) {
+      newErrors.houseNumber = "Revisar formato número de casa";
+    } else if (
+      houses.length > 0 &&
+      !houses.some((house) => house.houseNumber === houseNumber)
+    ) {
+      newErrors.houseNumber = "El número de casa no existe.";
+    }
+    if (dui && !duiRegex.test(dui)) newErrors.dui = "Revisar formato. Ej: 12345678-9";
+    if (comment && !commentRegex.test(comment)) newErrors.comment = "Solo se permite letras y números";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Retorna true si no hay errores
+  };
+
   const success = (result) => {
     //console.log("Scan result:", result); // Verifica el resultado del escaneo
     validateEntrance(result); // Llama a la función de validación con el resultado del escaneo
@@ -74,6 +109,28 @@ const HomeVigilante = () => {
   const error = (err) => {
     console.warn(err);
   };
+
+  useEffect(() => {
+    const fetchHouses = async () => {
+      try {
+        const response = await axios.get("/house/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.status === 200) {
+          setHouses(response.data.data);
+        } else {
+          toast.error("No se pudo obtener la lista de casas.");
+        }
+      } catch (error) {
+        toast.error("Error al obtener la lista de casas.");
+        console.error(error);
+      }
+    };
+
+    fetchHouses();
+  }, [token]);
 
   useEffect(() => {
     if (isScanning) {
@@ -113,11 +170,17 @@ const HomeVigilante = () => {
   };
 
   const handleRegisterClick = async () => {
+    if (!validateFields()) {
+      toast.error("Por favor corrige los errores antes de continuar.");
+      return;
+    }
+
     const entranceData = {
       name,
-      DUI: dui,
+      dui,
       comment,
-      houseNumber
+      houseNumber,
+      door
     };
 
     try {
@@ -153,14 +216,14 @@ const HomeVigilante = () => {
 
   return (
     <div className="containerMain">
-      <Navbar />
+      <Navbar menuButtons={[{ icon: <LogoutRounded />, name: "Cerrar Sesion", path: "/", logout: true }]} />
       <div className="container-vigi">
         <div className="qr-scanner-container">
           <h2 className="h2-qr">Escanear QR</h2>
           <div className="qr-container-reader">
             {showConfirmation ? (
               qrError ? (
-                <DeniedView message="Token no válido. Inténtalo de nuevo."/>
+                <DeniedView message="Token no válido. Inténtalo de nuevo." />
               ) : (
                 <ConfirmationView />
               )
@@ -186,16 +249,22 @@ const HomeVigilante = () => {
                 autoComplete="current-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                error={!!errors.name} // Marca error si existe un mensaje
+                helperText={errors.name} // Muestra el mensaje de error
+                style={errors.name ? { borderColor: 'red', borderWidth: 2 } : {}}
               />
             </div>
             <div className="textFlied">
               <TextField
                 id="outlined-casa-input"
-                label="Numero de Casa"
+                label="Número de Casa"
                 type="text"
                 autoComplete="current-casa"
                 value={houseNumber}
                 onChange={(e) => setHouseNumber(e.target.value)}
+                error={!!errors.houseNumber}
+                helperText={errors.houseNumber}
+                style={errors.houseNumber ? { borderColor: 'red', borderWidth: 2 } : {}}
               />
             </div>
             <div className="textFlied">
@@ -206,10 +275,9 @@ const HomeVigilante = () => {
                 autoComplete="current-dui"
                 value={dui}
                 onChange={handleDuiChange}
-                inputProps={{
-                  pattern: "^[0-9]{8}-[0-9]$", // Regex for DUI format: 8 digits, a hyphen, and 1 digit
-                  maxLength: 10 // 8 digits + 1 hyphen + 1 digit = 10 characters
-                }}
+                error={!!errors.dui}
+                helperText={errors.dui}
+                style={errors.dui ? { borderColor: 'red', borderWidth: 2 } : {}}
               />
             </div>
             <div className="textFlied">
@@ -220,6 +288,9 @@ const HomeVigilante = () => {
                 autoComplete="current-comentario"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
+                error={!!errors.comment}
+                helperText={errors.comment}
+                style={errors.comment ? { borderColor: 'red', borderWidth: 2 } : {}}
               />
             </div>
           </Box>
@@ -237,11 +308,10 @@ const HomeVigilante = () => {
           </div>
           <div className='btn-buttom-vigi'>
             <button className="btn-vigilate" onClick={handleRegisterClick}>Registrar</button>
-            <button className="btn-vigilate" onClick={handleLogoutClick}>Logout</button>
+            <button className="btn-vigilate phantom" onClick={handleLogoutClick}>Logout</button>
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

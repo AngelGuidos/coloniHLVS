@@ -12,13 +12,18 @@
 
     &:hover{
         background-color: var(--accent);
-        color: var(--text-primary);
+        color: var(--text-);
+        border: 2px solid black;
     }
 
     svg{
         margin-right: 0.5rem;
     }
 
+}
+
+.margin{
+    margin-top: 20px;
 }
 
 

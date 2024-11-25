@@ -63,7 +63,7 @@ public class AuthController {
 
             try {
                 Token token = userService.registerToken(user);
-                return GeneralResponse.getResponse(HttpStatus.OK, new TokenDTO(token));
+                return GeneralResponse.getResponse(HttpStatus.OK, new TokenDTO(token, jsonObject.get("picture").getAsString()));
             } catch (Exception e) {
                 e.printStackTrace();
                 return  GeneralResponse.getResponse(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -72,7 +72,7 @@ public class AuthController {
 
         try {
             Token token = userService.registerToken(user);
-            return GeneralResponse.getResponse(HttpStatus.OK, new TokenDTO(token));
+            return GeneralResponse.getResponse(HttpStatus.OK, new TokenDTO(token, jsonObject.get("picture").getAsString()));
         } catch (Exception e) {
             e.printStackTrace();
             return  GeneralResponse.getResponse(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -44,7 +44,7 @@ public class UserController {
         return GeneralResponse.getResponse(HttpStatus.OK ,"Role successfully updated!");
     }
 
-    @PreAuthorize("hasAnyAuthority('KEEP')")
+    @PreAuthorize("hasAnyAuthority('SUDO')")
     @GetMapping("/keeper")
     public ResponseEntity<GeneralResponse> getKeeper() {
 

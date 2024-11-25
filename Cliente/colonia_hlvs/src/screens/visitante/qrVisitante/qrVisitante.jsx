@@ -13,16 +13,13 @@ import { useParams } from "react-router-dom";
 import axios from '../../../api/axios';
 import useAuth from '../../../hooks/useAuth';
 
-import { Fab, useMediaQuery } from "@mui/material";
-import WidgetsIcon from "@mui/icons-material/Widgets";
-
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function QrVisitante() {
   const { id } = useParams();
   const { token } = useAuth();
-  const [timeLeft, setTimeLeft] = useState(180); // 3 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(0);
   const timerRef = useRef(null);
 
   const buttons = [
@@ -41,7 +38,7 @@ function QrVisitante() {
       
       if (response.status === 200 && response.data.data.token) {
         const qrText = response.data.data.token;
-        setTimeLeft(180);
+        setTimeLeft(response.data.data.graceTime * 60); 
         QRCode.toCanvas(
           document.getElementById("canvas-visitante"),
           qrText,
@@ -52,7 +49,7 @@ function QrVisitante() {
               toast.error("Error generando el código QR.");
             } else {
               console.log("¡Código QR generado con éxito!");
-              toast.success("¡Código QR generado con éxito!");
+              // toast.success("¡Código QR generado con éxito!");
             }
           }
         );
@@ -89,37 +86,9 @@ function QrVisitante() {
     handlerQrCodeChanger();
   }, [id]);
 
-  const fabStyle = {
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    backgroundColor: "#0d1b2a",
-    "&:hover": { backgroundColor: "#D2E0FB" },
-  };
-
-  const matches = useMediaQuery("(max-width:768px)");
-
-  const handleClick = () => {
-    const element = document.getElementById("hastaAbajoBaby");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div>
-      <Navbar />
-      <ToastContainer />
-      {matches && (
-        <Fab
-          size="medium"
-          color="primary"
-          className="fab"
-          aria-label="Ir al menu"
-          sx={fabStyle}
-          onClick={handleClick}
-        >
-          <WidgetsIcon />
-        </Fab>
-      )}
+      <Navbar menuButtons={buttons}/>
       <div className="father">
         <div className='Left' id='scroller'>
           <div className="lefQr-container">
@@ -130,9 +99,9 @@ function QrVisitante() {
               para ingresar.
             </div>
             <canvas id="canvas-visitante" className="myQR-visitante" />
-            <div className="countdown-timer">
+            <div className={timeLeft === 0? "countdownAlert": "countdown-timer"}>
             Tiempo restante: {formatTime(timeLeft)}
-          </div>
+            </div>
             <IconButton
               icon={<QrCode2RoundedIcon />}
               text="Refrescar"
