@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ErrorOutlineOutlined, Replay10Rounded, ReplayOutlined } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { color } from "@mui/system";
+import IconButton from "../../../components/buttons/IconButton/IconButton";
 
 
 function InvitadoHome() {
@@ -27,31 +28,33 @@ function InvitadoHome() {
     const [invitations, setInvitations] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchInvitations = async () => {
-            try {
-                const response = await axios.get('/invitation/mine', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                console.log(response.data.data)
-                if (response.status === 200) {
-                    const invitationsData = response.data.data;
-                    if (invitationsData && invitationsData.length > 0) {
-                        setInvitations(invitationsData);
-                    } else {
-                        // toast.warning('No tienes invitaciones disponibles');
-                    }
-                } else {
-                    toast.error('Error al cargar las invitaciones');
+    const fetchInvitations = async () => {
+        try {
+            const response = await axios.get('/invitation/mine', {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            } catch (error) {
+            });
+            console.log(response.data.data)
+            if (response.status === 200) {
+                const invitationsData = response.data.data;
+                if (invitationsData && invitationsData.length > 0) {
+                    setInvitations(invitationsData);
+                } else {
+                    // toast.warning('No tienes invitaciones disponibles');
+                }
+            } else {
                 toast.error('Error al cargar las invitaciones');
-                console.error(error);
             }
-        };
+        } catch (error) {
+            toast.error('Error al cargar las invitaciones');
+            console.error(error);
+        }
+    };
 
+
+    useEffect(() => {
+        
         fetchInvitations();
     }, [token]);
 
@@ -72,11 +75,7 @@ function InvitadoHome() {
                                     <ErrorOutlineOutlined className='icon' />
                                     Actualmente no tienes invitacione proximas a nuestra residencia.
                                 </div>
-                                <Button sx={
-                                    {color: 'white', backgroundColor: '#0d1b2a', borderRadius: '16px', textTransform: 'none', marginTop: '20px'}
-                                    } startIcon={<ReplayOutlined sx={{color: 'r#0d1b2a', margin: '4px'}}/>} >
-                                    Recargar invitaciones
-                                </Button>
+                                <IconButton icon={<ReplayOutlined />} onClick={() => fetchInvitations()} text={'Recargar invitaciones'}/> 
                             </>
                         ) : (invitations.map((item) => (
                             <CardDetail 
